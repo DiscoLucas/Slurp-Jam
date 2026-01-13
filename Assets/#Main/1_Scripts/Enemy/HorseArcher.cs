@@ -1,8 +1,12 @@
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class HorseArcher : EnemytClass
 {
     public GameObject enemyGoal; // Reference to the enemy goal object
+    public GameObject arrowPrefab;
+    public float arrowSpeed = 15f;
+    [SerializeField] private float arrowLifetime = 2.5f;
 
 
     private void Start()
@@ -13,6 +17,10 @@ public class HorseArcher : EnemytClass
     private void Update()
     {
         MoveTowardsGoal();
+        if (Vector3.Distance(transform.position, enemyGoal.transform.position) <= attackRange)
+        {
+            EnemyAttack();
+        }
     }
 
     private void MoveTowardsGoal()
@@ -24,13 +32,36 @@ public class HorseArcher : EnemytClass
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public override void EnemyAttack()
     {
-        if (other.CompareTag("EnemyGoal"))
-        {
-            // Handle reaching the enemy goal (e.g., deal damage, destroy grunt, etc.)
-            Debug.Log("Grunt has reached the enemy goal!");
-            Debug.Log(enemyName + " has delt " + enemyDamage + " damage to the base");
-        }
+        if (enemyGoal == null)
+            return;
+
+        if (Time.time < nextAttackTime)
+            return;
+
+        if (Vector3.Distance(transform.position, enemyGoal.transform.position) > attackRange)
+            return;
+
+        nextAttackTime = Time.time + attackSpeed;
+
+        Vector3 direction = (enemyGoal.transform.position - transform.position).normalized;
+
+        GameObject arrow = Instantiate(
+            arrowPrefab,
+            transform.position,
+            Quaternion.LookRotation(direction)
+        );
+
+        Rigidbody rb = arrow.GetComponent<Rigidbody>();
+        rb.linearVelocity = direction * arrowSpeed;
+
+        Arrow arrowScript = arrow.GetComponent<Arrow>();
+        arrowScript.SetDamage(enemyDamage);
+
+        Destroy(arrow, arrowLifetime);
     }
+
+
+
 }

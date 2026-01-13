@@ -8,6 +8,8 @@ public class EnemytClass : MonoBehaviour
     [SerializeField] protected int enemyHealth = 100;
     [SerializeField] protected float enemySpeed = 5f;
     [SerializeField] protected int enemyDamage = 10;
+    [SerializeField] protected float attackSpeed = 1f;
+    protected float nextAttackTime = 0f;
     [SerializeField] protected float aggroRange = 10f;
     [SerializeField] protected float attackRange = 1.5f;
     [SerializeField] protected int scrapDropAmount = 5;
@@ -42,7 +44,13 @@ public class EnemytClass : MonoBehaviour
     public virtual void EnemyAttack()
     {
         // Logic for enemy attack
+        // add logic for attack speed
         Debug.Log(enemyName + " attacks for " + enemyDamage + " damage.");
+    }
+
+    public virtual void EnemyDealDamage()
+    {
+
     }
 
 
