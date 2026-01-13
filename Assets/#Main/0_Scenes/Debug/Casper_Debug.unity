@@ -488,6 +488,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &2139229066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/Dash
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: 641cd816-40e6-41b4-8c3d-04687c349290
 --- !u!1001 &5892580363187967264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -548,9 +562,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2599787678539204920, guid: 1f794fdd03e99ef45abb328e268d0f6d,
         type: 3}
+      propertyPath: Dash
+      value: 
+      objectReference: {fileID: 2139229066}
+    - target: {fileID: 2599787678539204920, guid: 1f794fdd03e99ef45abb328e268d0f6d,
+        type: 3}
       propertyPath: Move
       value: 
       objectReference: {fileID: 642350517}
+    - target: {fileID: 2599787678539204920, guid: 1f794fdd03e99ef45abb328e268d0f6d,
+        type: 3}
+      propertyPath: dashPower
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2599787678539204920, guid: 1f794fdd03e99ef45abb328e268d0f6d,
         type: 3}
       propertyPath: moveModifier

@@ -231,7 +231,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.6
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -248,8 +248,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _characterController: {fileID: 6923788048964056958}
-  moveModifier: 5
+  moveModifier: 0.15
+  dashPower: 20
+  dashDuration: 0.2
+  gravityModifier: -10
   Move: {fileID: 0}
+  Dash: {fileID: 0}
 --- !u!114 &9122850346884058114
 MonoBehaviour:
   m_ObjectHideFlags: 0
