@@ -32,4 +32,6 @@ public class Grunt : EnemytClass
             Debug.Log(enemyName + " has delt " + damage + " damage to the base");
         }
     }
+
+
 }
