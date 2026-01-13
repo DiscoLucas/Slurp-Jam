@@ -39,26 +39,6 @@ public class WaveManager : MonoBehaviour
     private void startWave()
     {
         StartCoroutine(StartWaveCorotine());
-        //isWaveActive = true;
-        //isPreparingForNextWave = false;
-        //currentWave++;
-        //numberOfEnemiesToSpawn = 5 + (currentWave * 2); // Example scaling: increase enemies each wave
-        ////activate the enemy spawner
-        //// spawn enemy with a short delay between each spawn
-        //for (int i = 0; i < numberOfEnemiesToSpawn; i++)
-        //{
-        //    enemySpawner.SpawnEnemy();
-        //    WaitForSeconds wait = new WaitForSeconds(enemySpawner.spawnInterval); // Adjust the delay as needed
-        //}
-
-        ////if (enemySpawner != null)
-        ////{
-        ////    for (int i = 0; i < numberOfEnemiesToSpawn; i++)
-        ////    {
-        ////        enemySpawner.SpawnEnemy();
-        ////    }
-        ////    enemiesRemaining = numberOfEnemiesToSpawn;
-        ////}
     }
     private IEnumerator StartWaveCorotine()
     {
@@ -66,7 +46,7 @@ public class WaveManager : MonoBehaviour
         isPreparingForNextWave = false;
         currentWave++;
 
-        numberOfEnemiesToSpawn = 5 + (currentWave * 2);
+        numberOfEnemiesToSpawn = numberOfEnemiesToSpawn + (currentWave * 2);
 
         for (int i = 0; i < numberOfEnemiesToSpawn; i++)
         {

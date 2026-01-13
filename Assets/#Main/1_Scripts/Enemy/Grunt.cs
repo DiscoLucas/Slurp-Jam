@@ -19,7 +19,7 @@ public class Grunt : EnemytClass
         if (enemyGoal != null)
         {
             // Move the grunt towards the enemy goal
-            transform.position = Vector3.MoveTowards(transform.position, enemyGoal.transform.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, enemyGoal.transform.position, enemySpeed * Time.deltaTime);
         }
     }
 
@@ -29,7 +29,7 @@ public class Grunt : EnemytClass
         {
             // Handle reaching the enemy goal (e.g., deal damage, destroy grunt, etc.)
             Debug.Log("Grunt has reached the enemy goal!");
-            Debug.Log(enemyName + " has delt " + damage + " damage to the base");
+            Debug.Log(enemyName + " has delt " + enemyDamage + " damage to the base");
         }
     }
 
