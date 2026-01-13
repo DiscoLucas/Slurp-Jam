@@ -3,8 +3,8 @@
   <Project Path="Unity.PlasticSCM.Editor.csproj" />
   <Project Path="Unity.AppUI.csproj" />
   <Project Path="Unity.ShaderGraph.Editor.csproj" />
-  <Project Path="MoreMountains.Tools.csproj" />
   <Project Path="Unity.AI.ModelSelector.csproj" />
+  <Project Path="MoreMountains.Tools.csproj" />
   <Project Path="Unity.Mathematics.csproj" />
   <Project Path="Unity.Multiplayer.Center.Editor.csproj" />
   <Project Path="Unity.Cinemachine.Editor.csproj" />
