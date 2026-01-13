@@ -5,7 +5,7 @@ public class EnemySpawner : MonoBehaviour
     // Reference to the enemy prefab to spawn
     public GameObject enemyPrefab;
     // Spawn interval in seconds
-    public float spawnInterval = 2f;
+    public float spawnInterval = 1f;
     private float timer;
     //private void Update()
     //{

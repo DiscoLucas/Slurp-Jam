@@ -1,5 +1,9 @@
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using System.Collections;
 
 public class WaveManager : MonoBehaviour
 {
@@ -8,17 +12,22 @@ public class WaveManager : MonoBehaviour
     public bool isPreparingForNextWave;
     public bool isBossWave;
     public int enemiesRemaining;
-    public int numberOfEnemiesToSpawn;
+    public int numberOfEnemiesToSpawn = 5;
+    //public float spawnInterval = 1.0f;
     [SerializeField] private EnemySpawner enemySpawner;
 
-    private void Start()
+    private void Awake()
     {
         currentWave = 0;
         isWaveActive = false;
         isPreparingForNextWave = false;
         isBossWave = false;
         enemiesRemaining = 0;
-        numberOfEnemiesToSpawn = 0;
+    }
+
+    private void Start()
+    {
+        prepareForWave();
     }
 
     private void prepareForWave()
@@ -29,22 +38,45 @@ public class WaveManager : MonoBehaviour
 
     private void startWave()
     {
+        StartCoroutine(StartWaveCorotine());
+        //isWaveActive = true;
+        //isPreparingForNextWave = false;
+        //currentWave++;
+        //numberOfEnemiesToSpawn = 5 + (currentWave * 2); // Example scaling: increase enemies each wave
+        ////activate the enemy spawner
+        //// spawn enemy with a short delay between each spawn
+        //for (int i = 0; i < numberOfEnemiesToSpawn; i++)
+        //{
+        //    enemySpawner.SpawnEnemy();
+        //    WaitForSeconds wait = new WaitForSeconds(enemySpawner.spawnInterval); // Adjust the delay as needed
+        //}
+
+        ////if (enemySpawner != null)
+        ////{
+        ////    for (int i = 0; i < numberOfEnemiesToSpawn; i++)
+        ////    {
+        ////        enemySpawner.SpawnEnemy();
+        ////    }
+        ////    enemiesRemaining = numberOfEnemiesToSpawn;
+        ////}
+    }
+    private IEnumerator StartWaveCorotine()
+    {
         isWaveActive = true;
         isPreparingForNextWave = false;
         currentWave++;
-        // Additional logic for starting the wave can be added here
 
-        //activate the enemy spawner
-        // spawn enemy
-        if (enemySpawner != null)
+        numberOfEnemiesToSpawn = 5 + (currentWave * 2);
+
+        for (int i = 0; i < numberOfEnemiesToSpawn; i++)
         {
-            for (int i = 0; i < numberOfEnemiesToSpawn; i++)
-            {
-                enemySpawner.SpawnEnemy();
-            }
-            enemiesRemaining = numberOfEnemiesToSpawn;
+            enemySpawner.SpawnEnemy();
+            yield return new WaitForSeconds(enemySpawner.spawnInterval);
         }
+
+        enemiesRemaining = numberOfEnemiesToSpawn;
     }
+
 
     private void endWave()
     {
@@ -54,18 +86,18 @@ public class WaveManager : MonoBehaviour
     }
 
     //manually start wave for testing
+    [ContextMenu("StarWave")]
     public void ManualStartWave()
     {
-        if (Input.GetKeyDown("space") && !isWaveActive)
-        {
-            startWave();
-            Debug.Log("Wave " + currentWave + " Started Manually");
-        }
+        startWave();
+        Debug.Log("Wave " + currentWave + " Started Manually");
     }
 
-    public void Update()
+    //kill all enemies for testing
+    [ContextMenu("EndWave")]
+    public void ManualEndWave()
     {
-        ManualStartWave();
+        endWave();
+        Debug.Log("Wave " + currentWave + " Ended Manually");
     }
-
 }
