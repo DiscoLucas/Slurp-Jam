@@ -1,0 +1,74 @@
+using UnityEngine;
+
+/// <summary>
+/// Entity animator for static sprites (single-frame) using SpriteRenderer.
+/// Swaps sprites based on direction.
+/// </summary>
+public class EntityAnimatorStatic : EntityAnimtor
+{
+    [Header("Static Sprites")]
+    [SerializeField]
+    [Tooltip("Sprite to display when facing forward (0-45° and 315-360°)")]
+    private Sprite forwardSprite;
+    
+    [SerializeField]
+    [Tooltip("Sprite to display when facing back (135-225°)")]
+    private Sprite backSprite;
+    
+    [SerializeField]
+    [Tooltip("Sprite to display when facing left (225-315°)")]
+    private Sprite leftSprite;
+    
+    [SerializeField]
+    [Tooltip("Sprite to display when facing right (45-135°)")]
+    private Sprite rightSprite;
+
+    private SpriteRenderer spriteRenderer;
+    private Sprite currentSprite;
+
+    protected override void Start()
+    {
+        base.Start();
+        
+        if (spriteObject != null)
+        {
+            spriteRenderer = spriteObject.GetComponent<SpriteRenderer>();
+            
+            if (spriteRenderer == null)
+            {
+                Debug.LogError($"EntityAnimatorStatic on {gameObject.name} requires a SpriteRenderer component on the sprite object!", this);
+            }
+        }
+    }
+
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        
+        Sprite sprite = GetSpriteFromAngle(currentAngle);
+        
+        if (sprite != currentSprite && spriteRenderer != null && sprite != null)
+        {
+            currentSprite = sprite;
+            spriteRenderer.sprite = sprite;
+        }
+    }
+
+    private Sprite GetSpriteFromAngle(float angle)
+    {
+        // Forward: 0-45° and 315-360°
+        if (angle >= ANGLE_FORWARD_MIN || angle < ANGLE_FORWARD_MAX)
+            return forwardSprite;
+        
+        // Right: 45-135°
+        if (angle >= ANGLE_RIGHT_MIN && angle < ANGLE_RIGHT_MAX)
+            return rightSprite;
+        
+        // Back: 135-225°
+        if (angle >= ANGLE_BACK_MIN && angle < ANGLE_BACK_MAX)
+            return backSprite;
+        
+        // Left: 225-315°
+        return leftSprite;
+    }
+}

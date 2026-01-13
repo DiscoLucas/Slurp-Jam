@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 81bc93981f72ec746b4c61f10bcbfd18
+guid: 11510d5da327412469822a449bcebce4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -37,18 +37,18 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Slurp-Sheet_0
+      name: player-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 128
-        height: 128
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01f16e4032f28ad40a0803351f899aec
-      internalID: -1076073350
+      spriteID: 4098e4abbe5d1af42b5479a8ec54edf1
+      internalID: 1286061475
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slurp-Sheet_1
+      name: player-Sheet_1
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 128
-        height: 128
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d85de912266883e468fa71683172addd
-      internalID: 1139771942
+      spriteID: 07e6e70a882fcd540a30abbcdc7d7d49
+      internalID: -1832411691
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slurp-Sheet_2
+      name: player-Sheet_2
       rect:
         serializedVersion: 2
         x: 256
         y: 0
         width: 128
-        height: 128
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7658074e9409bf241831f6b07f9f41ca
-      internalID: -605018312
+      spriteID: 181998ae032f3c545b61a46f4fb64e48
+      internalID: 1708784840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slurp-Sheet_3
+      name: player-Sheet_3
       rect:
         serializedVersion: 2
         x: 384
         y: 0
         width: 128
-        height: 128
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,30 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd977429dfd59e24faed751677b0a169
-      internalID: 1277491878
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slurp-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 73b68662ac418fc49801f04bf15bb577
-      internalID: -165920341
+      spriteID: 148baa91ab5630f4c9cab143173c9a54
+      internalID: 1883685850
       vertices: []
       indices: 
       edges: []
@@ -210,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 13c091c1faef7d144b27d722a4d14a43
+    spriteID: 2089a2ba8a9b739428b86278e07dfe99
     internalID: 0
     vertices: []
     indices: 
@@ -220,13 +198,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Slurp-Sheet_0: -1076073350
-      Slurp-Sheet_1: 1139771942
-      Slurp-Sheet_2: -605018312
-      Slurp-Sheet_3: 1277491878
-      Slurp-Sheet_4: -165920341
+      player-Sheet_0: 1286061475
+      player-Sheet_1: -1832411691
+      player-Sheet_2: 1708784840
+      player-Sheet_3: 1883685850
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
