@@ -10,7 +10,7 @@ public class ProjectileSpawner : MonoBehaviour
     public void Fire()
     {
         if(ammo>0){
-            GameObject.Instantiate<GameObject>(projectile);
+            GameObject.Instantiate<GameObject>(projectile,transform.position,transform.rotation);
             if (usesAmmo)
             {
                 ammo--;

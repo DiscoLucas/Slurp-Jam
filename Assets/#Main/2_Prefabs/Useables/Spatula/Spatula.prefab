@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994e71b937bf47f469c8475c9bd16e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  projectile: {fileID: 0}
+  projectile: {fileID: 252104210914102841, guid: fbe5b2f0cf49bcc44b97c0850458aa8d,
+    type: 3}
   usesAmmo: 0
   ammo: 1
