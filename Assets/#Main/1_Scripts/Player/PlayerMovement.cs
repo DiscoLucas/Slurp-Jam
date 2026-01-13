@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     public InputActionReference Move;
     public InputActionReference Dash;
+    public InputActionReference MousePosition;
 
     void Update()
     {
@@ -25,6 +26,13 @@ public class PlayerMovement : MonoBehaviour
     {
         float gravity = gravityModifier * Time.deltaTime;
         _characterController.Move(new Vector3(_moveDirection.x * moveModifier, gravity, _moveDirection.y * moveModifier));
+
+        Vector3 mousePos = MousePosition.action.ReadValue<Vector2>();
+        mousePos.z = Camera.main.transform.position.y - transform.position.y;
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        worldPos.y = transform.position.y;
+        transform.LookAt(worldPos);
+
     }
 
     void OnEnable()
@@ -40,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
     private void OnDash(InputAction.CallbackContext context)
     {
         //check if on cooldown
-        Debug.Log("Dashing");
         StartCoroutine(DashEnum());
     }
 
