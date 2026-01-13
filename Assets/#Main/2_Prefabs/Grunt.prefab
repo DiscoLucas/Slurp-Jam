@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 892558890937221339}
   m_Layer: 0
   m_Name: Grunt
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,13 +129,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grunt
   enemyName: Grunt
-  health: 100
-  speed: 5
-  damage: 10
+  enemyHealth: 100
+  enemySpeed: 5
+  enemyDamage: 10
   aggroRange: 10
   attackRange: 1.5
   scrapDropAmount: 5
   slopDropAmount: 2
+  deathSound: {fileID: 0}
+  attackSound: {fileID: 0}
   enemyGoal: {fileID: 0}
 --- !u!54 &892558890937221339
 Rigidbody:
