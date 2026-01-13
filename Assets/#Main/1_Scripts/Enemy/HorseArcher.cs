@@ -1,28 +1,13 @@
 using UnityEngine;
 
-public class Grunt : EnemytClass
+public class HorseArcher : EnemytClass
 {
     public GameObject enemyGoal; // Reference to the enemy goal object
-    public Material gruntMaterial1;
-    public Material gruntMaterial2;
+
 
     private void Start()
     {
         enemyGoal = GameObject.FindWithTag("EnemyGoal");
-    }
-
-    //select random material for grunt when instansiated
-    public void SelectRandomMaterialForGunt()
-    {
-        Renderer renderer = GetComponent<Renderer>();
-        if (Random.value > 0.5f)
-        {
-            renderer.material = gruntMaterial1;
-        }
-        else
-        {
-            renderer.material = gruntMaterial2;
-        }
     }
 
     private void Update()
@@ -48,6 +33,4 @@ public class Grunt : EnemytClass
             Debug.Log(enemyName + " has delt " + enemyDamage + " damage to the base");
         }
     }
-
-
 }

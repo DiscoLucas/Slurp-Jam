@@ -4,6 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using System.Collections;
+using System.Linq;
 
 public class WaveManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class WaveManager : MonoBehaviour
     public int numberOfEnemiesToSpawn = 5;
     //public float spawnInterval = 1.0f;
     [SerializeField] private EnemySpawner enemySpawner;
+    [Header("Array of Enemy Types")]
+    [SerializeField] private EnemyType[] enemyTypes;
+
 
     private void Awake()
     {
@@ -46,16 +50,22 @@ public class WaveManager : MonoBehaviour
         isPreparingForNextWave = false;
         currentWave++;
 
-        numberOfEnemiesToSpawn = numberOfEnemiesToSpawn + (currentWave * 2);
+        numberOfEnemiesToSpawn += currentWave * 2;
 
         for (int i = 0; i < numberOfEnemiesToSpawn; i++)
         {
-            enemySpawner.SpawnEnemy();
+            EnemyType type = GetRandomEnemyType();
+            if (type != null)
+            {
+                enemySpawner.SpawnEnemy(type.enemyPrefab);
+            }
+
             yield return new WaitForSeconds(enemySpawner.spawnInterval);
         }
 
         enemiesRemaining = numberOfEnemiesToSpawn;
     }
+
 
 
     private void endWave()
@@ -79,5 +89,29 @@ public class WaveManager : MonoBehaviour
     {
         endWave();
         Debug.Log("Wave " + currentWave + " Ended Manually");
+    }
+
+    private EnemyType GetRandomEnemyType()
+    {
+        // Only enemies unlocked for this wave
+        var availableEnemies = enemyTypes
+            .Where(e => currentWave >= e.firstEncounter)
+            .ToList();
+
+        if (availableEnemies.Count == 0)
+            return null;
+
+        int totalWeight = availableEnemies.Sum(e => e.spawnRate);
+        int randomValue = Random.Range(0, totalWeight);
+
+        int runningTotal = 0;
+        foreach (var enemy in availableEnemies)
+        {
+            runningTotal += enemy.spawnRate;
+            if (randomValue < runningTotal)
+                return enemy;
+        }
+
+        return availableEnemies[0];
     }
 }
