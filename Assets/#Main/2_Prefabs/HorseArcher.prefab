@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1186394065796236914}
   - component: {fileID: 4088983712266920818}
+  - component: {fileID: 1588793675583432716}
+  - component: {fileID: 291192844477732327}
   m_Layer: 0
   m_Name: Henst-Sheet_0
   m_TagString: Untagged
@@ -91,6 +93,48 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &1588793675583432716
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678036266367772214}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e9978625f20b08b449be51604e96f324, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &291192844477732327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678036266367772214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0feab8e976a690344bba1deb6e05a2df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HorseEntiryAnimator
+  navMeshAgent: {fileID: 8659660887047531226}
+  animator: {fileID: 1588793675583432716}
+  spriteRenderer: {fileID: 4088983712266920818}
+  entityAnimatorStatic: {fileID: 3464553171668606368}
+  baseSpeed: 3.5
+  minAnimationSpeed: 0
+  maxAnimationSpeed: 3
+  smoothing: 5
 --- !u!1 &5719201171300097009
 GameObject:
   m_ObjectHideFlags: 0
