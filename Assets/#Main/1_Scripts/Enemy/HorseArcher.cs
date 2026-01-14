@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HorseArcher : EnemytClass
 {
-    public GameObject enemyGoal; // Reference to the enemy goal object
+    //public GameObject enemyGoal; // Reference to the enemy goal object
     public GameObject arrowPrefab;
     public float arrowSpeed = 15f;
     [SerializeField] private float arrowLifetime = 2.5f;
@@ -11,12 +11,12 @@ public class HorseArcher : EnemytClass
 
     private void Start()
     {
-        enemyGoal = GameObject.FindWithTag("EnemyGoal");
+        //enemyGoal = GameObject.FindWithTag("EnemyGoal");
     }
 
     private void Update()
     {
-        MoveTowardsGoal();
+        EnemyMoveTowardsTarget();
         if (Vector3.Distance(transform.position, enemyGoal.transform.position) <= attackRange)
         {
             EnemyAttack();

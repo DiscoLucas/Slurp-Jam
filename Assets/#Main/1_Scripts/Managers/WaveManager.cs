@@ -114,4 +114,24 @@ public class WaveManager : MonoBehaviour
 
         return availableEnemies[0];
     }
+
+    //Manual damage to enemies
+    // Manual damage to enemies
+    [ContextMenu("DamageAllEnemies")]
+    public void DamageAllEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemyObj in enemies)
+        {
+            EnemytClass enemy = enemyObj.GetComponent<EnemytClass>();
+            if (enemy != null)
+            {
+                enemy.EnemyTakeDamage(9999);
+            }
+        }
+
+        Debug.Log("All Enemies Damaged");
+    }
+
 }
