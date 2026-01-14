@@ -106,5 +106,5 @@ MonoBehaviour:
   projectile: {fileID: 252104210914102841, guid: e009647b0e8a96d48baddf2b9ee59290,
     type: 3}
   usesAmmo: 1
-  ammo: 5
+  ammo: 10
   cooldown: 1

@@ -14,7 +14,7 @@ public class CanThrow : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInParent<Rigidbody>();
         direction = (transform.position - GameObject.FindWithTag("Player").transform.position).normalized;
 
         rb.AddForce(direction*travelSpeed, ForceMode.Impulse);
@@ -39,7 +39,7 @@ public class CanThrow : MonoBehaviour
                 enemy.EnemyTakeDamage(Damage);
             }
 
-            Destroy(gameObject);
+            Destroy(GetComponentInParent<GameObject>());
         }
     }
 }
