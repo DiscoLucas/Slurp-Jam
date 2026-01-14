@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Grunt : EnemytClass
 {
-    public GameObject enemyGoal; // Reference to the enemy goal object
+    //public GameObject enemyGoal; // Reference to the enemy goal object
     public Material gruntMaterial1;
     public Material gruntMaterial2;
 
     private void Start()
     {
-        enemyGoal = GameObject.FindWithTag("EnemyGoal");
+        //enemyGoal = GameObject.FindWithTag("EnemyGoal");
     }
 
     //select random material for grunt when instansiated
@@ -27,7 +27,7 @@ public class Grunt : EnemytClass
 
     private void Update()
     {
-        MoveTowardsGoal();
+        EnemyMoveTowardsTarget();
     }
 
     private void MoveTowardsGoal()
