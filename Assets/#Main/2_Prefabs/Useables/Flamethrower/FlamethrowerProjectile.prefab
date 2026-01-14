@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d73b2841ddc8144a01c4a576c9b24f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CanThrow
-  timer: 2
-  Damage: 5
+  lifeTime: 0.5
+  damage: 5
   travelSpeed: 3
   hitStrenghThreshold: 0.1
