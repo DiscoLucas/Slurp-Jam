@@ -7,6 +7,15 @@ public class EnemySpawner : MonoBehaviour
     // Spawn interval in seconds
     public float spawnInterval = 1f;
     private float timer;
+    public Transform enemyGoal;
+    public Transform player;
+
+    private void Awake()
+    {
+        player = GameObject.FindWithTag("Player").transform;
+        enemyGoal = GameObject.FindGameObjectWithTag("EnemyGoal").transform;
+        Debug.Log("Enemy Goal found: " + enemyGoal.name);
+    }
 
     private void Start()
     {
@@ -15,7 +24,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy(GameObject enemyPrefab)
     {
-        Instantiate(enemyPrefab, transform.position, transform.rotation);
+        GameObject obj = Instantiate(enemyPrefab, transform.position, transform.rotation);
+        obj.GetComponent<EnemytClass>().CreateAgent(player, enemyGoal);
         //selec a random material if the enemy is a grunt
         Grunt gruntComponent = enemyPrefab.GetComponent<Grunt>();
         if (gruntComponent != null)
