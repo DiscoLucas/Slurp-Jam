@@ -15,7 +15,7 @@ public class UI_PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RefreshPlayerHealth();
+        //RefreshPlayerHealth();
     }
 
     public void RefreshPlayerHealth()

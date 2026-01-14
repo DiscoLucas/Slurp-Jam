@@ -107,4 +107,8 @@ public class PlayerActions : MonoBehaviour
         if (pu != null)
             pu.EnablePickup();
     }
+
+    //weapon switching function should be added here
+
+
 }

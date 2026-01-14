@@ -5,6 +5,9 @@ public class PlayerContainer : MonoBehaviour
     [SerializeField] protected int maxHealth = 100;
     [SerializeField] protected int currentHealth;
 
+    //UI stuff
+    
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -24,6 +27,8 @@ public class PlayerContainer : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        UI_PlayerHealth uiPlayerHealth = FindObjectOfType<UI_PlayerHealth>();
+        uiPlayerHealth.RefreshPlayerHealth();
         if (currentHealth <= 0)
         {
             Die();
