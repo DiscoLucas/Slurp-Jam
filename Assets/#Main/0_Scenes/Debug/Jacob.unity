@@ -246,12 +246,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!4 &760961141 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6862865352435729149, guid: b9567f7f6a070424b85907e840bfb8f7,
-    type: 3}
-  m_PrefabInstance: {fileID: 4733731456241313154}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &977909952
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,34 +402,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1125168395 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6726502345935617430, guid: e22b4d7ac36c4f043a4f0103700b4d1c,
-    type: 3}
-  m_PrefabInstance: {fileID: 7695714924670130486}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &1125168401
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125168395}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 5
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &1601274463
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,11 +652,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Corpse
       objectReference: {fileID: 0}
-    - target: {fileID: 1562112532435634118, guid: 5b17767b412525c489f9abac35525f01,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8732639329270377201, guid: 5b17767b412525c489f9abac35525f01,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -804,12 +765,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 796656335329301118, guid: e20765d5fdfc5ed4bafe2084c78fffb3,
-        type: 3}
-      propertyPath: enemyGoal
-      value: 
-      objectReference: {fileID: 6862865352435729149, guid: b9567f7f6a070424b85907e840bfb8f7,
-        type: 3}
     - target: {fileID: 3355970845525502373, guid: e20765d5fdfc5ed4bafe2084c78fffb3,
         type: 3}
       propertyPath: m_Name
@@ -1092,11 +1047,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArrowPlaceholder
       objectReference: {fileID: 0}
-    - target: {fileID: 7500859016654256154, guid: f5aaff6ab10373a49b49ad45903b4366,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1165,29 +1115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HorseArcher
       objectReference: {fileID: 0}
-    - target: {fileID: 6726502345935617430, guid: e22b4d7ac36c4f043a4f0103700b4d1c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8234700653935794632, guid: e22b4d7ac36c4f043a4f0103700b4d1c,
-        type: 3}
-      propertyPath: enemyGoal
-      value: 
-      objectReference: {fileID: 760961141}
-    - target: {fileID: 8234700653935794632, guid: e22b4d7ac36c4f043a4f0103700b4d1c,
-        type: 3}
-      propertyPath: navMeshAgent
-      value: 
-      objectReference: {fileID: 1125168401}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6726502345935617430, guid: e22b4d7ac36c4f043a4f0103700b4d1c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1125168401}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e22b4d7ac36c4f043a4f0103700b4d1c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

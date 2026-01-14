@@ -37,11 +37,9 @@ public class PlayerActions : MonoBehaviour
         while(cooldown > 0)
         {
             cooldown-=Time.deltaTime;
-            Debug.Log("reloading");
             yield return null;
         }
 
-        Debug.Log("Can fire!");
         canFire = true;
         yield return null;
     }

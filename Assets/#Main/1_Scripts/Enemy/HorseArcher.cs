@@ -17,8 +17,9 @@ public class HorseArcher : EnemytClass
     private void Update()
     {
         EnemyMoveTowardsTarget();
-        if (Vector3.Distance(transform.position, enemyGoal.transform.position) <= attackRange)
+        if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
         {
+            Debug.Log("begin attack");
             EnemyAttack();
         }
     }
@@ -32,20 +33,35 @@ public class HorseArcher : EnemytClass
         }
     }
 
+    protected Transform GetAttackTarget()
+    {
+        if (player != null)
+        {
+            float distToPlayer = Vector3.Distance(transform.position, player.position);
+            if (distToPlayer <= attackRange)
+                return player;
+        }
+
+        return enemyGoal;
+    }
+
+
     public override void EnemyAttack()
     {
-        if (enemyGoal == null)
+        Transform target = GetAttackTarget();
+        if (target == null)
             return;
 
         if (Time.time < nextAttackTime)
             return;
 
-        if (Vector3.Distance(transform.position, enemyGoal.transform.position) > attackRange)
+        float distance = Vector3.Distance(transform.position, target.position);
+        if (distance > attackRange)
             return;
 
         nextAttackTime = Time.time + attackSpeed;
 
-        Vector3 direction = (enemyGoal.transform.position - transform.position).normalized;
+        Vector3 direction = (target.position - transform.position).normalized;
 
         GameObject arrow = Instantiate(
             arrowPrefab,
@@ -61,6 +77,7 @@ public class HorseArcher : EnemytClass
 
         Destroy(arrow, arrowLifetime);
     }
+
 
 
 

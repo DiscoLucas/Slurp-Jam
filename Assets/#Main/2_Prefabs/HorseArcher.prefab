@@ -14,13 +14,14 @@ GameObject:
   - component: {fileID: 8954002795557323909}
   - component: {fileID: 8234700653935794632}
   - component: {fileID: 8659660887047531226}
+  - component: {fileID: 3006175246754092612}
   m_Layer: 0
   m_Name: HorseArcher
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3552859191737061034
 Transform:
   m_ObjectHideFlags: 0
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6726502345935617430}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.67, y: 1, z: -0.07}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -129,12 +130,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HorseArcher
   enemyName: HorseArcher
-  enemyHealth: 150
+  enemyHealth: 10
   enemySpeed: 2
   enemyDamage: 15
   attackSpeed: 2
   attackRange: 10
-  aggroRange: 15
+  aggroRange: 55
   enemyGoal: {fileID: 6862865352435729149, guid: b9567f7f6a070424b85907e840bfb8f7,
     type: 3}
   player: {fileID: 1361106105947693667, guid: 1f794fdd03e99ef45abb328e268d0f6d, type: 3}
@@ -171,3 +172,30 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!54 &3006175246754092612
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6726502345935617430}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
