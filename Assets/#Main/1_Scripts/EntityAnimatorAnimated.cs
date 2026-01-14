@@ -19,6 +19,8 @@ public class EntityAnimatorAnimated : EntityAnimtor
         public string right = "Right";
     }
 
+    public bool mutlipuleAnimation = true;
+
     [SerializeField]
     private AnimationNames animationNames = new AnimationNames();
 
@@ -44,6 +46,9 @@ public class EntityAnimatorAnimated : EntityAnimtor
     {
         base.FixedUpdate();
         
+        if(!mutlipuleAnimation)
+            return;
+            
         string animation = GetAnimationFromAngle(currentAngle);
         
         if (animation != currentAnimation && animator != null)

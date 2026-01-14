@@ -7,16 +7,25 @@ using UnityEngine.InputSystem;
 public class PlayerActions : MonoBehaviour
 {
     public GameObject Weapon;
-    public InputActionReference Fire;
+
+    public Transform handContainer;
+    public InputActionReference Fire,Interact;
     bool canFire = true;
+    bool carryinObject = false;
+    public bool pirrorityInteraction = false;
+
+    [SerializeField]
+    private float placeDistance = 2f;
     void OnEnable()
     {
         Fire.action.started += OnFire;
+        Interact.action.started += InteractAction;
     }
 
     void OnDisable()
     {
         Fire.action.started -= OnFire;
+        Interact.action.started -= InteractAction;
     }
 
     private void OnFire(InputAction.CallbackContext context)
@@ -42,5 +51,47 @@ public class PlayerActions : MonoBehaviour
 
         canFire = true;
         yield return null;
+    }
+
+    private void InteractAction(InputAction.CallbackContext context)
+    {
+        Debug.Log("Interact action triggered");
+        if (!pirrorityInteraction && carryinObject)
+        {
+            dropObject();
+        }
+            
+    }
+
+    public void carryObject(GameObject obj)
+    {
+        obj.transform.SetParent(handContainer);
+        obj.transform.localPosition = Vector3.zero;
+        obj.transform.localRotation = Quaternion.identity;
+        carryinObject = true;
+
+        PickUp pu = obj.GetComponent<PickUp>();
+        if (pu != null)
+            pu.DisablePickup();
+        
+    }
+    public bool isCarryingObject()
+    {
+        return carryinObject;
+    }
+    public GameObject removeCarriedObject()
+    {
+        carryinObject = false;
+        return handContainer.GetChild(0).gameObject;
+    }
+    public void dropObject()
+    {
+        GameObject carryedObject = handContainer.GetChild(0).gameObject;
+        carryedObject.transform.SetParent(null);
+        carryinObject = false;
+        carryedObject.transform.position = transform.position + transform.forward * placeDistance;
+        PickUp pu = carryedObject.GetComponent<PickUp>();
+        if (pu != null)
+            pu.EnablePickup();
     }
 }
