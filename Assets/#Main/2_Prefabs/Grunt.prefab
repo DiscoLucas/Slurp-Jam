@@ -139,7 +139,8 @@ MonoBehaviour:
   aggroRange: 25
   enemyGoal: {fileID: 6862865352435729149, guid: b9567f7f6a070424b85907e840bfb8f7,
     type: 3}
-  player: {fileID: 1361106105947693667, guid: 1f794fdd03e99ef45abb328e268d0f6d, type: 3}
+  player: {fileID: 0}
+  appearesObject: {fileID: 25463925453051004}
   navMeshAgent: {fileID: 6636706606380751868}
   scrapDropAmount: 5
   slopDropAmount: 2
@@ -279,7 +280,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1286061475, guid: 11510d5da327412469822a449bcebce4, type: 3}
+  m_Sprite: {fileID: 1604858435, guid: 12e1060c820b67a45a08c8a61afaff32, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -335,7 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityAnimatorStatic
   spriteObject: {fileID: 6111774231934556186}
-  forwardSprite: {fileID: 1708784840, guid: 11510d5da327412469822a449bcebce4, type: 3}
-  backSprite: {fileID: 1286061475, guid: 11510d5da327412469822a449bcebce4, type: 3}
-  leftSprite: {fileID: -1832411691, guid: 11510d5da327412469822a449bcebce4, type: 3}
-  rightSprite: {fileID: 1883685850, guid: 11510d5da327412469822a449bcebce4, type: 3}
+  forwardSprite: {fileID: -2125570389, guid: 12e1060c820b67a45a08c8a61afaff32, type: 3}
+  backSprite: {fileID: 1604858435, guid: 12e1060c820b67a45a08c8a61afaff32, type: 3}
+  leftSprite: {fileID: -286454592, guid: 12e1060c820b67a45a08c8a61afaff32, type: 3}
+  rightSprite: {fileID: -1913765363, guid: 12e1060c820b67a45a08c8a61afaff32, type: 3}
