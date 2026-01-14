@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 003098e599679b644865b31a2a151e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpatulaSlash
-  Damage: 10
+  Damage: 30
 --- !u!65 &5090293091724391135
 BoxCollider:
   m_ObjectHideFlags: 0

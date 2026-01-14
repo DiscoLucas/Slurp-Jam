@@ -107,3 +107,4 @@ MonoBehaviour:
     type: 3}
   usesAmmo: 0
   ammo: 1
+  cooldown: 0.25

@@ -6,6 +6,7 @@ public class ProjectileSpawner : MonoBehaviour
     public GameObject projectile;
     public bool usesAmmo; //this is only actual for the spatula, might just remove it.
     public int ammo;
+    public float cooldown;
 
     public void Fire()
     {
