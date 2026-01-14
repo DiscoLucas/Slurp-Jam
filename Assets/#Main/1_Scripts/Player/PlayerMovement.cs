@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     public InputActionReference Move;
     public InputActionReference Dash;
+    public float dashCooldown = 1;
+    private bool canDash = true;
     public InputActionReference MousePosition;
 
     void Update()
@@ -47,14 +49,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDash(InputAction.CallbackContext context)
     {
-        //check if on cooldown
-        StartCoroutine(DashEnum());
+        if(canDash)
+            StartCoroutine(DashEnum());
     }
 
-    IEnumerator DashEnum()
+    IEnumerator DashEnum() //will currently dash for x seconds THEN wait for x seconds cooldown.
     {
+        canDash = false;
         float myTime = dashDuration; 
         float elapsedTime = 0f;
+        float dashEnumCooldown = dashCooldown;
 
         Vector3 dashDirection =
             new Vector3(_moveDirection.x, 0f, _moveDirection.y).normalized * dashPower;
@@ -65,5 +69,13 @@ public class PlayerMovement : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        while (dashEnumCooldown > 0)
+        {
+            dashEnumCooldown -= Time.deltaTime;
+            yield return null;
+        }
+        canDash = true;
+        yield return null;
     }
 }
