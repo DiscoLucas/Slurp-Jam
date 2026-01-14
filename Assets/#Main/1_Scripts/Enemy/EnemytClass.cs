@@ -104,6 +104,12 @@ public class EnemytClass : MonoBehaviour
 
     }
 
+    public virtual void CreateAgent(Transform player, Transform goal)
+    {
+        this.player = player;
+        this.enemyGoal = goal;
+    }
+
 
 
 
