@@ -463,11 +463,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 186438681}
-    - target: {fileID: 8234700653935794632, guid: e22b4d7ac36c4f043a4f0103700b4d1c,
-        type: 3}
-      propertyPath: enemySpeed
-      value: 25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
