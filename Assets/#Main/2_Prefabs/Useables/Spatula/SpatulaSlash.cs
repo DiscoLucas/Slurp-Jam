@@ -28,6 +28,7 @@ public class SpatulaSlash : MonoBehaviour
             if (enemy != null)
             {
                 enemy.EnemyTakeDamage(Damage);
+                Debug.Log("enemy has taken damage");
             }
         }
     }
