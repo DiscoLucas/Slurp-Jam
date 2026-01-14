@@ -27,16 +27,6 @@ public class HorseArcher : EnemytClass
         orbitSpeed = enemySpeed * 0.95f;
     }
 
-    private void Update()
-    {
-        EnemyMoveTowardsTarget();
-        if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
-        {
-            Debug.Log("begin attack");
-            EnemyAttack();
-        }
-    }
-
     protected Transform GetAttackTarget()
     {
         if (player != null)

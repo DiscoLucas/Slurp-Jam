@@ -119,6 +119,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &186438681 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8937939349068240687, guid: 91e0d3039d7d8be43986a78c12d577e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6363410131843543147}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &642350517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,12 +392,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
   m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_ActionId: 6c2ab1b8-8984-453a-af3d-a3c78ae1679a
---- !u!4 &1532038882 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 25463925453051004, guid: e20765d5fdfc5ed4bafe2084c78fffb3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1957097961}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1745888736
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +488,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HorseArcher
       objectReference: {fileID: 0}
+    - target: {fileID: 8234700653935794632, guid: e22b4d7ac36c4f043a4f0103700b4d1c,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 186438681}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -680,44 +685,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 796656335329301118, guid: e20765d5fdfc5ed4bafe2084c78fffb3,
         type: 3}
-      propertyPath: appearesObject
+      propertyPath: player
       value: 
-      objectReference: {fileID: 1532038882}
+      objectReference: {fileID: 186438681}
     - target: {fileID: 3355970845525502373, guid: e20765d5fdfc5ed4bafe2084c78fffb3,
         type: 3}
       propertyPath: m_Name
       value: Grunt
       objectReference: {fileID: 0}
-    - target: {fileID: 3460672416602472872, guid: e20765d5fdfc5ed4bafe2084c78fffb3,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1604858435, guid: 12e1060c820b67a45a08c8a61afaff32,
-        type: 3}
-    - target: {fileID: 7154755696622470653, guid: e20765d5fdfc5ed4bafe2084c78fffb3,
-        type: 3}
-      propertyPath: backSprite
-      value: 
-      objectReference: {fileID: 1604858435, guid: 12e1060c820b67a45a08c8a61afaff32,
-        type: 3}
-    - target: {fileID: 7154755696622470653, guid: e20765d5fdfc5ed4bafe2084c78fffb3,
-        type: 3}
-      propertyPath: leftSprite
-      value: 
-      objectReference: {fileID: -286454592, guid: 12e1060c820b67a45a08c8a61afaff32,
-        type: 3}
-    - target: {fileID: 7154755696622470653, guid: e20765d5fdfc5ed4bafe2084c78fffb3,
-        type: 3}
-      propertyPath: rightSprite
-      value: 
-      objectReference: {fileID: -1913765363, guid: 12e1060c820b67a45a08c8a61afaff32,
-        type: 3}
-    - target: {fileID: 7154755696622470653, guid: e20765d5fdfc5ed4bafe2084c78fffb3,
-        type: 3}
-      propertyPath: forwardSprite
-      value: 
-      objectReference: {fileID: -2125570389, guid: 12e1060c820b67a45a08c8a61afaff32,
-        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

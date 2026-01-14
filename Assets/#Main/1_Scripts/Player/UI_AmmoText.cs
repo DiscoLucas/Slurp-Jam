@@ -4,7 +4,7 @@ using UnityEngine;
 public class UI_AmmoText : MonoBehaviour
 {
 
-    public ProjectileSpawner projectileSpawner;
+    public PlayerActions weapon;
     public TextMeshProUGUI text;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,13 +20,13 @@ public class UI_AmmoText : MonoBehaviour
 
     public void RefreshAmmoText()
     {
-        if (projectileSpawner.usesAmmo)
+        if (weapon.usesAmmo)
         {
-            text.text = projectileSpawner.ammo.ToString();
+            text.text = "Ammo: " + weapon.ammo.ToString();
         }
         else
         {
-            text.text = "∞";
+            text.text = "Ammo: ∞";
         }
     }
 }

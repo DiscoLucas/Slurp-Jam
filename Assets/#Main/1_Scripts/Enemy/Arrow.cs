@@ -19,15 +19,22 @@ public class Arrow : MonoBehaviour
             // other.GetComponent<BaseHealth>()?.TakeDamage(damage);
 
             Destroy(gameObject);
-        }
-
-        if (other.CompareTag("Player"))
+        } else if (other.CompareTag("Player"))
         {
             Debug.Log("Arrow hit for " + damage + " damage to " + GameObject.FindGameObjectWithTag("Player"));
+            PlayerContainer player = other.GetComponent<PlayerContainer>();
+            if (player != null)
+            {
+                player.TakeDamage(damage);
+            }
 
             // Apply damage to base/goal
             // other.GetComponent<BaseHealth>()?.TakeDamage(damage);
 
+            Destroy(gameObject);
+        }
+        else if (!other.CompareTag("Enemy"))
+        {
             Destroy(gameObject);
         }
     }
