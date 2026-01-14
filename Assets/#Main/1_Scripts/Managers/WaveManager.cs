@@ -18,6 +18,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private EnemySpawner enemySpawner;
     [Header("Array of Enemy Types")]
     [SerializeField] private EnemyType[] enemyTypes;
+    [SerializeField] private int bossWaveInterval = 5;
+    [SerializeField] private int playerHealthRegenPerWave = 10;
 
 
     private void Awake()
@@ -73,6 +75,8 @@ public class WaveManager : MonoBehaviour
         isWaveActive = false;
         enemiesRemaining = 0;
         // Additional logic for ending the wave can be added here
+        PlayerContainer playerContainer = GetComponent<PlayerContainer>();
+        playerContainer.Heal(playerHealthRegenPerWave);
     }
 
     //manually start wave for testing

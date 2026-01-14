@@ -22,11 +22,11 @@ public class UI_AmmoText : MonoBehaviour
     {
         if (projectileSpawner.usesAmmo)
         {
-            text.text = projectileSpawner.ammo.ToString();
+            text.text = "Ammo: " + projectileSpawner.ammo.ToString();
         }
         else
         {
-            text.text = "∞";
+            text.text = "Ammo: ∞";
         }
     }
 }

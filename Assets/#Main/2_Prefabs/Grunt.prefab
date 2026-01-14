@@ -135,7 +135,7 @@ MonoBehaviour:
   enemySpeed: 5
   enemyDamage: 10
   attackSpeed: 1
-  attackRange: 1.5
+  attackRange: 2
   aggroRange: 25
   enemyGoal: {fileID: 6862865352435729149, guid: b9567f7f6a070424b85907e840bfb8f7,
     type: 3}
