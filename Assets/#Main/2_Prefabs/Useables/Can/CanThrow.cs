@@ -25,7 +25,7 @@ public class RangedWeaponTemplate : MonoBehaviour
         lifeTime -= Time.deltaTime;
         if (lifeTime < 0)
         {
-            Destroy(GetComponentInParent<GameObject>());
+            Destroy(transform.parent.gameObject);
         }
     }
 
@@ -39,7 +39,7 @@ public class RangedWeaponTemplate : MonoBehaviour
                 enemy.EnemyTakeDamage(damage);
             }
 
-            Destroy(GetComponentInParent<GameObject>());
+            Destroy(transform.parent.gameObject);
         }
     }
 }
