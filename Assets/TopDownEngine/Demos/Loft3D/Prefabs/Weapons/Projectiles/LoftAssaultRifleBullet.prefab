@@ -5169,12 +5169,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObstaclesLayerMask:
     serializedVersion: 2
-    m_Bits: 12032
+    m_Bits: 1792
   SkinWidth: 0.1
   RepositionRigidbody: 1
   RepositionRigidbodyLayerMask:
     serializedVersion: 2
-    m_Bits: 12032
+    m_Bits: 1792
   Adjustment: 0
 --- !u!114 &114469000093533656
 MonoBehaviour:
