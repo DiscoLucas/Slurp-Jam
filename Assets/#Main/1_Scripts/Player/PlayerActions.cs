@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,9 +9,8 @@ using UnityEngine.InputSystem;
 public class PlayerActions : MonoBehaviour
 {
     public GameObject Weapon;
-
     public Transform handContainer;
-    public InputActionReference Fire,Interact;
+    public InputActionReference Fire,Interact,SwapNext,SwapPrev;
     bool canFire = true;
     bool carryinObject = false;
     public bool pirrorityInteraction = false;
@@ -17,13 +18,25 @@ public class PlayerActions : MonoBehaviour
     [SerializeField]
     private float placeDistance = 2f;
     [SerializeField]
-    public ProjectileSpawner ActiveProjectileSpawner; //ActiveProjectileSpawner = Weapon.GetComponentInChildren<ProjectileSpawner>();
     bool isFiring = false;
+    public ProjectileSpawner ActiveProjectileSpawner; //ActiveProjectileSpawner = Weapon.GetComponentInChildren<ProjectileSpawner>();
+    public int activeWeaponSpot;
+    public List<GameObject> Inventory;
+    
 
     void OnEnable()
     {
+        /*foreach(Transform g in gameObject.GetComponentsInChildren<Transform>())
+        {
+            Inventory.Add(g.gameObject);
+        }
+        ActiveProjectileSpawner = Inventory[0].GetComponent<ProjectileSpawner>(); //Very risky, and assumes that we have projectile spawners.*/
+
         Fire.action.started += ctx => isFiring = true;
         Fire.action.canceled += ctx => isFiring = false;
+
+        SwapNext.action.performed += OnSwapNext;
+        SwapPrev.action.performed += OnSwapPrev;
     }
 
     void OnDisable()
@@ -109,6 +122,17 @@ public class PlayerActions : MonoBehaviour
     }
 
     //weapon switching function should be added here
-
+    //TODO: Add maxing and minning to activeWeaponSpot
+    public void OnSwapNext(InputAction.CallbackContext context)
+    {
+        activeWeaponSpot++;
+        ActiveProjectileSpawner = Inventory[activeWeaponSpot].GetComponent<ProjectileSpawner>();
+    }
+    
+    public void OnSwapPrev(InputAction.CallbackContext context)
+    {
+        activeWeaponSpot--;
+        ActiveProjectileSpawner = Inventory[activeWeaponSpot].GetComponent<ProjectileSpawner>();
+    }
 
 }
