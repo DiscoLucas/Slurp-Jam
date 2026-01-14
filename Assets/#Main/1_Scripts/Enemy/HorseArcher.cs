@@ -17,8 +17,9 @@ public class HorseArcher : EnemytClass
     private void Update()
     {
         EnemyMoveTowardsTarget();
-        if (Vector3.Distance(transform.position, enemyGoal.transform.position) <= attackRange)
+        if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
         {
+            Debug.Log("begin attack");
             EnemyAttack();
         }
     }
