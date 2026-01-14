@@ -29,8 +29,11 @@ public abstract class EntityAnimtor : MonoBehaviour
     
     protected virtual void FixedUpdate()
     {
-
+        // Project camera forward onto horizontal plane (Y-axis rotation only)
         Vector3 cameraFoward = Camera.main.transform.forward;
+        cameraFoward.y = 0;
+        cameraFoward.Normalize();
+        
         Vector3 objectFoward = transform.forward;
 
         float angle = Vector3.SignedAngle(cameraFoward, objectFoward, Vector3.up);
@@ -43,7 +46,7 @@ public abstract class EntityAnimtor : MonoBehaviour
 
         if (spriteObject != null)
         {
-            spriteObject.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Vector3.forward);
+            spriteObject.transform.rotation = Quaternion.LookRotation(cameraFoward, Vector3.up);
         }
     }
 }
