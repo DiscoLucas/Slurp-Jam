@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -25,6 +26,7 @@ public class EntityAnimatorStatic : EntityAnimtor
 
     private SpriteRenderer spriteRenderer;
     private Sprite currentSprite;
+    int currentDirection = 0;
 
     protected override void Start()
     {
@@ -39,6 +41,9 @@ public class EntityAnimatorStatic : EntityAnimtor
                 Debug.LogError($"EntityAnimatorStatic on {gameObject.name} requires a SpriteRenderer component on the sprite object!", this);
             }
         }
+    }
+    public int GetCurrentDirection(){
+        return currentDirection;
     }
 
     protected override void FixedUpdate()
@@ -56,19 +61,22 @@ public class EntityAnimatorStatic : EntityAnimtor
 
     private Sprite GetSpriteFromAngle(float angle)
     {
-        // Forward: 0-45° and 315-360°
         if (angle >= ANGLE_FORWARD_MIN || angle < ANGLE_FORWARD_MAX)
+        {
+            currentDirection = 0;
             return forwardSprite;
-        
-        // Right: 45-135°
+        }            
         if (angle >= ANGLE_RIGHT_MIN && angle < ANGLE_RIGHT_MAX)
+        {
+            currentDirection = 1;
             return rightSprite;
-        
-        // Back: 135-225°
+        }
         if (angle >= ANGLE_BACK_MIN && angle < ANGLE_BACK_MAX)
+        {
+            currentDirection = 2;
             return backSprite;
-        
-        // Left: 225-315°
+        }
+        currentDirection = 3;
         return leftSprite;
     }
 }

@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,9 +9,8 @@ using UnityEngine.InputSystem;
 public class PlayerActions : MonoBehaviour
 {
     public GameObject Weapon;
-
     public Transform handContainer;
-    public InputActionReference Fire,Interact;
+    public InputActionReference Fire,Interact,SwapNext,SwapPrev;
     bool canFire = true;
     bool carryinObject = false;
     public bool pirrorityInteraction = false;
@@ -17,13 +18,25 @@ public class PlayerActions : MonoBehaviour
     [SerializeField]
     private float placeDistance = 2f;
     [SerializeField]
-    public ProjectileSpawner ActiveProjectileSpawner; //ActiveProjectileSpawner = Weapon.GetComponentInChildren<ProjectileSpawner>();
     bool isFiring = false;
+    public ProjectileSpawner ActiveProjectileSpawner; //ActiveProjectileSpawner = Weapon.GetComponentInChildren<ProjectileSpawner>();
+    public int activeWeaponSpot;
+    public List<GameObject> Inventory;
+    
 
     void OnEnable()
     {
+        /*foreach(Transform g in gameObject.GetComponentsInChildren<Transform>())
+        {
+            Inventory.Add(g.gameObject);
+        }
+        ActiveProjectileSpawner = Inventory[0].GetComponent<ProjectileSpawner>(); //Very risky, and assumes that we have projectile spawners.*/
+
         Fire.action.started += ctx => isFiring = true;
         Fire.action.canceled += ctx => isFiring = false;
+
+        SwapNext.action.performed += OnSwapNext;
+        SwapPrev.action.performed += OnSwapPrev;
     }
 
     void OnDisable()
@@ -108,7 +121,40 @@ public class PlayerActions : MonoBehaviour
             pu.EnablePickup();
     }
 
-    //weapon switching function should be added here
+#region Swapping Weapons
+    void SwapWeapon(int direction)
+    {
+        if (Inventory == null || Inventory.Count == 0)
+            return;
 
+        // Disable current weapon
+        Inventory[activeWeaponSpot].SetActive(false);
 
+        // Move index
+        activeWeaponSpot += direction;
+
+        // Wrap index safely
+        if (activeWeaponSpot >= Inventory.Count)
+            activeWeaponSpot = 0;
+        else if (activeWeaponSpot < 0)
+            activeWeaponSpot = Inventory.Count - 1;
+
+        // Enable new weapon
+        GameObject newWeapon = Inventory[activeWeaponSpot];
+        newWeapon.SetActive(true);
+
+        // Update spawner
+        ActiveProjectileSpawner = newWeapon.GetComponent<ProjectileSpawner>();
+    }
+
+    void OnSwapNext(InputAction.CallbackContext ctx)
+    {
+        SwapWeapon(1);
+    }
+
+    void OnSwapPrev(InputAction.CallbackContext ctx)
+    {
+        SwapWeapon(-1);
+    }
+ #endregion
 }
