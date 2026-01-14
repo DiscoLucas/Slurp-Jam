@@ -3,12 +3,12 @@ using Unity.AppUI.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CanThrow : MonoBehaviour
+public class RangedWeaponTemplate : MonoBehaviour
 {
-    private float timer = 2f;
-    public int Damage;
+    public float lifeTime = 0.5f;
+    public int damage;
     public float travelSpeed;
-    private float hitStrenghThreshold = 1f;
+    public float hitStrenghThreshold = 1f;
     Vector3 direction;
     Rigidbody rb;
 
@@ -22,10 +22,10 @@ public class CanThrow : MonoBehaviour
 
     void Update()
     {
-        timer -= Time.deltaTime;
-        if (timer < 0)
+        lifeTime -= Time.deltaTime;
+        if (lifeTime < 0)
         {
-            Destroy(gameObject);
+            Destroy(GetComponentInParent<GameObject>());
         }
     }
 
@@ -36,7 +36,7 @@ public class CanThrow : MonoBehaviour
             EnemytClass enemy = collision.gameObject.GetComponent<EnemytClass>();
             if (enemy != null)
             {
-                enemy.EnemyTakeDamage(Damage);
+                enemy.EnemyTakeDamage(damage);
             }
 
             Destroy(GetComponentInParent<GameObject>());
