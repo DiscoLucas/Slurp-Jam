@@ -121,18 +121,40 @@ public class PlayerActions : MonoBehaviour
             pu.EnablePickup();
     }
 
-    //weapon switching function should be added here
-    //TODO: Add maxing and minning to activeWeaponSpot
-    public void OnSwapNext(InputAction.CallbackContext context)
+#region Swapping Weapons
+    void SwapWeapon(int direction)
     {
-        activeWeaponSpot++;
-        ActiveProjectileSpawner = Inventory[activeWeaponSpot].GetComponent<ProjectileSpawner>();
-    }
-    
-    public void OnSwapPrev(InputAction.CallbackContext context)
-    {
-        activeWeaponSpot--;
-        ActiveProjectileSpawner = Inventory[activeWeaponSpot].GetComponent<ProjectileSpawner>();
+        if (Inventory == null || Inventory.Count == 0)
+            return;
+
+        // Disable current weapon
+        Inventory[activeWeaponSpot].SetActive(false);
+
+        // Move index
+        activeWeaponSpot += direction;
+
+        // Wrap index safely
+        if (activeWeaponSpot >= Inventory.Count)
+            activeWeaponSpot = 0;
+        else if (activeWeaponSpot < 0)
+            activeWeaponSpot = Inventory.Count - 1;
+
+        // Enable new weapon
+        GameObject newWeapon = Inventory[activeWeaponSpot];
+        newWeapon.SetActive(true);
+
+        // Update spawner
+        ActiveProjectileSpawner = newWeapon.GetComponent<ProjectileSpawner>();
     }
 
+    void OnSwapNext(InputAction.CallbackContext ctx)
+    {
+        SwapWeapon(1);
+    }
+
+    void OnSwapPrev(InputAction.CallbackContext ctx)
+    {
+        SwapWeapon(-1);
+    }
+ #endregion
 }
