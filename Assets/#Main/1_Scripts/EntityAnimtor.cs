@@ -43,7 +43,7 @@ public abstract class EntityAnimtor : MonoBehaviour
 
         if (spriteObject != null)
         {
-            spriteObject.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Vector3.up);
+            spriteObject.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Vector3.forward);
         }
     }
 }
