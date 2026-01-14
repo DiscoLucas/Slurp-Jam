@@ -13,7 +13,17 @@ public class Arrow : MonoBehaviour
     {
         if (other.CompareTag("EnemyGoal"))
         {
-            Debug.Log("Arrow hit for " + damage + " damage");
+            Debug.Log("Arrow hit for " + damage + " damage to " + GameObject.FindGameObjectWithTag("EnemyGoal") );
+
+            // Apply damage to base/goal
+            // other.GetComponent<BaseHealth>()?.TakeDamage(damage);
+
+            Destroy(gameObject);
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Arrow hit for " + damage + " damage to " + GameObject.FindGameObjectWithTag("Player"));
 
             // Apply damage to base/goal
             // other.GetComponent<BaseHealth>()?.TakeDamage(damage);

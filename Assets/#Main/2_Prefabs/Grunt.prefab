@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1655393351832207936}
   - component: {fileID: 796656335329301118}
   - component: {fileID: 892558890937221339}
+  - component: {fileID: 6636706606380751868}
   m_Layer: 0
   m_Name: Grunt
   m_TagString: Enemy
@@ -69,7 +70,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7f10a9d2618ced54f8d87eb7fae84fc2, type: 2}
+  - {fileID: 2100000, guid: 853206296390359498522ea4f00952cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,13 +133,18 @@ MonoBehaviour:
   enemyHealth: 100
   enemySpeed: 5
   enemyDamage: 10
-  aggroRange: 10
+  attackSpeed: 1
   attackRange: 1.5
+  aggroRange: 5
+  enemyGoal: {fileID: 0}
+  player: {fileID: 0}
+  navMeshAgent: {fileID: 6636706606380751868}
   scrapDropAmount: 5
   slopDropAmount: 2
+  corpsePrefab: {fileID: 1562112532435634118, guid: 5b17767b412525c489f9abac35525f01,
+    type: 3}
   deathSound: {fileID: 0}
   attackSound: {fileID: 0}
-  enemyGoal: {fileID: 0}
   gruntMaterial1: {fileID: 2100000, guid: 853206296390359498522ea4f00952cd, type: 2}
   gruntMaterial2: {fileID: 2100000, guid: 7f10a9d2618ced54f8d87eb7fae84fc2, type: 2}
 --- !u!54 &892558890937221339
@@ -168,3 +174,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!195 &6636706606380751868
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3355970845525502373}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
