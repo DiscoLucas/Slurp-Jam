@@ -13,13 +13,14 @@ GameObject:
   - component: {fileID: 1245539290665474751}
   - component: {fileID: 8954002795557323909}
   - component: {fileID: 8234700653935794632}
+  - component: {fileID: 8659660887047531226}
   m_Layer: 0
   m_Name: HorseArcher
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3552859191737061034
 Transform:
   m_ObjectHideFlags: 0
@@ -134,17 +135,39 @@ MonoBehaviour:
   attackSpeed: 2
   attackRange: 10
   aggroRange: 15
-  enemyGoal: {fileID: 0}
-  player: {fileID: 0}
-  navMeshAgent: {fileID: 0}
+  enemyGoal: {fileID: 6862865352435729149, guid: b9567f7f6a070424b85907e840bfb8f7,
+    type: 3}
+  player: {fileID: 1361106105947693667, guid: 1f794fdd03e99ef45abb328e268d0f6d, type: 3}
+  navMeshAgent: {fileID: 8659660887047531226}
   scrapDropAmount: 5
   slopDropAmount: 10
   corpsePrefab: {fileID: 1562112532435634118, guid: 5b17767b412525c489f9abac35525f01,
     type: 3}
   deathSound: {fileID: 0}
   attackSound: {fileID: 0}
-  enemyGoal: {fileID: 0}
   arrowPrefab: {fileID: 7500859016654256154, guid: f5aaff6ab10373a49b49ad45903b4366,
     type: 3}
   arrowSpeed: 150
   arrowLifetime: 2.5
+--- !u!195 &8659660887047531226
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6726502345935617430}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 5
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
