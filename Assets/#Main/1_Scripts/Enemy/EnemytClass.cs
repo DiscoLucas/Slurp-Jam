@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemytClass : MonoBehaviour
@@ -16,6 +16,7 @@ public class EnemytClass : MonoBehaviour
     [SerializeField] protected Transform enemyGoal;
     [SerializeField] protected Transform player;
 
+    [SerializeField] protected Transform appearesObject;
     
     //NavMeshAgent for movement
     [SerializeField] protected NavMeshAgent navMeshAgent;
@@ -40,6 +41,15 @@ public class EnemytClass : MonoBehaviour
         //navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
+    private void Update()
+    {
+        EnemyMoveTowardsTarget();
+        if (Vector3.Distance(transform.position, player.position) <= attackRange)
+        {
+            EnemyAttack();
+        }
+    }
+
     //Functions for all Enemies
     public virtual void EnemyDeath()
     {
@@ -62,15 +72,27 @@ public class EnemytClass : MonoBehaviour
 
     public virtual void EnemyAttack()
     {
-        // Logic for enemy attack
-        // add logic for attack speed
-        Debug.Log(enemyName + " attacks for " + enemyDamage + " damage.");
+        
     }
 
-    public virtual void EnemyDealDamage()
+
+    protected virtual void EnemyDealDamage(Collider other)
     {
-
+        if (other.CompareTag("EnemyGoal"))
+        {
+            Debug.Log("Arrow hit for " + enemyDamage + " damage to " + GameObject.FindGameObjectWithTag("EnemyGoal"));
+        }
+        else if (other.CompareTag("Player"))
+        {
+            Debug.Log("Arrow hit for " + enemyDamage + " damage to " + GameObject.FindGameObjectWithTag("Player"));
+            PlayerContainer player = other.GetComponent<PlayerContainer>();
+            if (player != null)
+            {
+                player.TakeDamage(enemyDamage);
+            }
+        }
     }
+
 
     //Movement Function towards EnemyGaol tag or Player if within aggro range
     protected Transform GetCurrentTarget()
@@ -102,12 +124,28 @@ public class EnemytClass : MonoBehaviour
         Quaternion lookRot = Quaternion.LookRotation(dir);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 5f);
 
+        //Roate appearesObject to face movement direction
+        if (appearesObject != null)
+        {
+            Vector3 moveDirection = navMeshAgent.velocity;
+            if (moveDirection.sqrMagnitude > 0.1f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+                appearesObject.rotation = Quaternion.Slerp(appearesObject.rotation, targetRotation, Time.deltaTime * 5f);
+            }
+        }
+
     }
 
     public virtual void CreateAgent(Transform player, Transform goal)
     {
         this.player = player;
         this.enemyGoal = goal;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        EnemyDealDamage(other);
     }
 
 
