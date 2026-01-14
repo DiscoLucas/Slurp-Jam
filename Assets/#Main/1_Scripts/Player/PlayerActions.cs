@@ -16,22 +16,35 @@ public class PlayerActions : MonoBehaviour
 
     [SerializeField]
     private float placeDistance = 2f;
+    [SerializeField]
+    public ProjectileSpawner ActiveProjectileSpawner; //ActiveProjectileSpawner = Weapon.GetComponentInChildren<ProjectileSpawner>();
+    bool isFiring = false;
+
     void OnEnable()
     {
-        Fire.action.started += OnFire;
-        Interact.action.started += InteractAction;
+        Fire.action.started += ctx => isFiring = true;
+        Fire.action.canceled += ctx => isFiring = false;
     }
 
     void OnDisable()
     {
-        Fire.action.started -= OnFire;
-        Interact.action.started -= InteractAction;
+        Fire.action.started -= ctx => isFiring = true;
+        Fire.action.canceled -= ctx => isFiring = false;
     }
 
-    private void OnFire(InputAction.CallbackContext context)
+    void Update()
+    {
+        if (isFiring)
+        {
+            Debug.Log("Fire!");
+            OnFire();
+        }
+    }
+
+
+    private void OnFire()
     {
         if(canFire){
-            ProjectileSpawner ActiveProjectileSpawner = Weapon.GetComponentInChildren<ProjectileSpawner>();
             if(ActiveProjectileSpawner){
                 ActiveProjectileSpawner.Fire(); //player should always have a spatula, but if you want to, you can add a fallback here - Be angry at Casper for this
                 StartCoroutine(Reload(ActiveProjectileSpawner.cooldown));
