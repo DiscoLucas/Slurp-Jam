@@ -16,6 +16,7 @@ public class EnemytClass : MonoBehaviour
     [SerializeField] protected Transform enemyGoal;
     [SerializeField] protected Transform player;
 
+    [SerializeField] protected Transform appearesObject;
     
     //NavMeshAgent for movement
     [SerializeField] protected NavMeshAgent navMeshAgent;
@@ -101,6 +102,17 @@ public class EnemytClass : MonoBehaviour
         Vector3 dir = (target.position - transform.position).normalized;
         Quaternion lookRot = Quaternion.LookRotation(dir);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 5f);
+
+        //Roate appearesObject to face movement direction
+        if (appearesObject != null)
+        {
+            Vector3 moveDirection = navMeshAgent.velocity;
+            if (moveDirection.sqrMagnitude > 0.1f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+                appearesObject.rotation = Quaternion.Slerp(appearesObject.rotation, targetRotation, Time.deltaTime * 5f);
+            }
+        }
 
     }
 
