@@ -1,33 +1,33 @@
-using System.Linq;
-using Unity.InferenceEngine;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpatulaSlash : MonoBehaviour
 {
     private float timer = 0.1f;
     public int Damage;
-    GameObject[] hitEnemies;
 
-    // Update is called once per frame
+    private List<GameObject> hitEnemies = new List<GameObject>();
+
     void Update()
     {
-        timer-=Time.deltaTime;
+        timer -= Time.deltaTime;
         if (timer < 0)
         {
             Destroy(gameObject);
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.tag == "Enemy" &! hitEnemies.Contains<GameObject>(collision.gameObject))
+        if (collision.gameObject.CompareTag("Enemy") &&
+            !hitEnemies.Contains(collision.gameObject))
         {
-            hitEnemies.Append<GameObject>(collision.gameObject);
-            EnemytClass Enemy = collision.gameObject.GetComponent<EnemytClass>();
-            if(Enemy !=null)
+            hitEnemies.Add(collision.gameObject);
+
+            EnemytClass enemy = collision.gameObject.GetComponent<EnemytClass>();
+            if (enemy != null)
             {
-                Debug.Log("hit an enemy!");
-                Enemy.EnemyTakeDamage(Damage);
+                enemy.EnemyTakeDamage(Damage);
             }
         }
     }
