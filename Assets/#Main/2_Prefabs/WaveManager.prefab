@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6728b75bb88049479783444492f0f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
-  currentWave: 0
+  currentWave: 2
   isWaveActive: 0
   isPreparingForNextWave: 0
   isBossWave: 0

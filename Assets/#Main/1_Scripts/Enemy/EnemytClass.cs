@@ -16,7 +16,7 @@ public class EnemytClass : MonoBehaviour
     [SerializeField] protected Transform enemyGoal;
     [SerializeField] protected Transform player;
 
-
+    
     //NavMeshAgent for movement
     [SerializeField] protected NavMeshAgent navMeshAgent;
 

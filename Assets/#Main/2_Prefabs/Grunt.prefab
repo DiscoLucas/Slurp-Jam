@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grunt
   enemyName: Grunt
-  enemyHealth: 100
+  enemyHealth: 50
   enemySpeed: 5
   enemyDamage: 10
   attackSpeed: 1

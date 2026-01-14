@@ -1,5 +1,6 @@
-using UnityEditor.ShaderGraph.Internal;
+﻿using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class HorseArcher : EnemytClass
 {
@@ -8,10 +9,22 @@ public class HorseArcher : EnemytClass
     public float arrowSpeed = 15f;
     [SerializeField] private float arrowLifetime = 2.5f;
 
+    //HorseArcher spicifics
+    [SerializeField] private float orbitDistance = 2f;
+    [SerializeField] private float orbitSpeed = 2f;
+    [SerializeField] private float orbitSmoothing = 2f;
+    [SerializeField] private float thresholdDistance = 0.5f;
+
+    private float orbitAngle;
+    private float orbitDirection;
+
+    private float navMeshMaxDist = 2f;  
+    private float ratio = 8f;
 
     private void Start()
     {
-        //enemyGoal = GameObject.FindWithTag("EnemyGoal");
+        orbitDirection = Random.value > 0.5f ? 1f : -1f;
+        orbitSpeed = enemySpeed * 0.95f;
     }
 
     private void Update()
@@ -21,15 +34,6 @@ public class HorseArcher : EnemytClass
         {
             Debug.Log("begin attack");
             EnemyAttack();
-        }
-    }
-
-    private void MoveTowardsGoal()
-    {
-        if (enemyGoal != null)
-        {
-            // Move the grunt towards the enemy goal
-            transform.position = Vector3.MoveTowards(transform.position, enemyGoal.transform.position, enemySpeed * Time.deltaTime);
         }
     }
 
@@ -77,6 +81,64 @@ public class HorseArcher : EnemytClass
 
         Destroy(arrow, arrowLifetime);
     }
+
+    private enum MoveState { Approach, Orbit }
+    private MoveState currentMoveState = MoveState.Approach;
+
+
+    public override void EnemyMoveTowardsTarget()
+    {
+        if (navMeshAgent == null)
+            return;
+
+        Transform target = GetCurrentTarget();
+        if (target == null)
+            return;
+
+        float distance = Vector3.Distance(transform.position, target.position);
+
+        float approachThreshold = attackRange + thresholdDistance;
+        float orbitThreshold = attackRange - thresholdDistance;
+
+        // 🔁 Update state
+        if (currentMoveState == MoveState.Approach && distance < orbitThreshold)
+            currentMoveState = MoveState.Orbit;
+        else if (currentMoveState == MoveState.Orbit && distance > approachThreshold)
+            currentMoveState = MoveState.Approach;
+
+        navMeshAgent.speed = enemySpeed;
+        navMeshAgent.isStopped = false;
+
+        if (currentMoveState == MoveState.Approach)
+        {
+            navMeshAgent.SetDestination(target.position);
+        }
+        else // Orbit
+        {
+            orbitAngle += orbitSpeed * orbitDirection * Time.deltaTime;
+
+            Vector3 offset = new Vector3(
+                Mathf.Cos(orbitAngle),
+                0,
+                Mathf.Sin(orbitAngle)
+            ) * orbitDistance;
+
+            Vector3 orbitPos = target.position + offset;
+
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(orbitPos, out hit, navMeshMaxDist, NavMesh.AllAreas))
+            {
+                navMeshAgent.SetDestination(hit.position);
+            }
+        }
+
+        // Always face target
+        Vector3 dir = (target.position - transform.position).normalized;
+        Quaternion lookRot = Quaternion.LookRotation(dir);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * ratio);
+    }
+
+
 
 
 
