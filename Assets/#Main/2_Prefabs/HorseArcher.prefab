@@ -148,7 +148,7 @@ MonoBehaviour:
   attackSound: {fileID: 0}
   arrowPrefab: {fileID: 7500859016654256154, guid: f5aaff6ab10373a49b49ad45903b4366,
     type: 3}
-  arrowSpeed: 150
+  arrowSpeed: 37.5
   arrowLifetime: 2.5
   orbitDistance: 6
   orbitSpeed: 2
