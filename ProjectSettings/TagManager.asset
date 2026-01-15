@@ -22,8 +22,8 @@ TagManager:
   - Enemy
   - EnemyProjectile
   - PlayerProjectileWorldBox
-  - 
-  - 
+  - Floor
+  - Obstacles
   - 
   - 
   - 

@@ -25,6 +25,8 @@ public class PlayerActions : MonoBehaviour
     public List<GameObject> Inventory;
     public UnityEvent possiableInteractEvent;
     public UnityEvent unPossiableInteractEvent;
+    [SerializeField]
+    PlacementController placementController;
     
 
     void OnEnable()
@@ -35,21 +37,37 @@ public class PlayerActions : MonoBehaviour
         }
         ActiveProjectileSpawner = Inventory[0].GetComponent<ProjectileSpawner>(); //Very risky, and assumes that we have projectile spawners.*/
 
-        Fire.action.started += ctx => isFiring = true;
-        Fire.action.canceled += ctx => isFiring = false;
+        if (Fire != null)
+        {
+            Fire.action.started += OnFireStarted;
+            Fire.action.canceled += OnFireCanceled;
+        }
 
-        SwapNext.action.performed += OnSwapNext;
-        SwapPrev.action.performed += OnSwapPrev;
+        if (SwapNext != null)
+            SwapNext.action.performed += OnSwapNext;
+        if (SwapPrev != null)
+            SwapPrev.action.performed += OnSwapPrev;
     }
 
     void OnDisable()
     {
-        Fire.action.started -= ctx => isFiring = true;
-        Fire.action.canceled -= ctx => isFiring = false;
+        if (Fire != null)
+        {
+            Fire.action.started -= OnFireStarted;
+            Fire.action.canceled -= OnFireCanceled;
+        }
+
+        if (SwapNext != null)
+            SwapNext.action.performed -= OnSwapNext;
+        if (SwapPrev != null)
+            SwapPrev.action.performed -= OnSwapPrev;
     }
 
     void Update()
     {
+        if (placementController != null && placementController.IsPlacing)
+            return;
+
         if (isFiring)
         {
             Debug.Log("Fire!");
@@ -90,6 +108,22 @@ public class PlayerActions : MonoBehaviour
             dropObject();
         }
             
+    }
+
+    void OnFireStarted(InputAction.CallbackContext ctx)
+    {
+        if (placementController != null && placementController.IsPlacing)
+        {
+            placementController.TryConfirmPlacement();
+            return;
+        }
+
+        isFiring = true;
+    }
+
+    void OnFireCanceled(InputAction.CallbackContext ctx)
+    {
+        isFiring = false;
     }
 
     public void carryObject(GameObject obj)
@@ -156,12 +190,34 @@ public class PlayerActions : MonoBehaviour
 
     void OnSwapNext(InputAction.CallbackContext ctx)
     {
+        if (placementController != null && placementController.IsPlacing)
+            return;
         SwapWeapon(1);
     }
 
     void OnSwapPrev(InputAction.CallbackContext ctx)
     {
+        if (placementController != null && placementController.IsPlacing)
+            return;
         SwapWeapon(-1);
+    }
+
+    public void BeginPlacement(GameObject prefab, Material validMaterial, Material invalidMaterial)
+    {
+        if (placementController == null)
+            return;
+
+        isFiring = false;
+        placementController.BeginPlacement(prefab, validMaterial, invalidMaterial);
+    }
+
+    public void CancelPlacement()
+    {
+        if (placementController == null)
+            return;
+
+        isFiring = false;
+        placementController.CancelPlacement();
     }
 
     //Function that activates and deactivate interact prompt
