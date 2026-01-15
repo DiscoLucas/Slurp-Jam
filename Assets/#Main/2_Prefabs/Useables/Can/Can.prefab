@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &186305520786925991
 Transform:
   m_ObjectHideFlags: 0
@@ -109,3 +109,4 @@ MonoBehaviour:
   ammo: 10
   cooldown: 1
   maxAmmo: 10
+  weaponIcon: {fileID: 21300000, guid: 63fbc8b3221e88543b41427b9b97ad5e, type: 3}
