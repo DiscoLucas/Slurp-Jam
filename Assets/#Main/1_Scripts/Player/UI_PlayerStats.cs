@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-public class UI_PlayerHealth : MonoBehaviour
+public class UI_PlayerStats : MonoBehaviour
 {
     [Header("Player Health")]
     public PlayerContainer playerContainer;

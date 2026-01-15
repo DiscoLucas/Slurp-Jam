@@ -58,10 +58,11 @@ public class PlayerContainer : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        UI_PlayerHealth uiPlayerHealth = FindObjectOfType<UI_PlayerHealth>();
-        uiPlayerHealth.RefreshPlayerHealth();
+        UI_PlayerStats uiPlayerStats = FindObjectOfType<UI_PlayerStats>();
+        uiPlayerStats.RefreshPlayerHealth();
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
             Die();
         }
     }
