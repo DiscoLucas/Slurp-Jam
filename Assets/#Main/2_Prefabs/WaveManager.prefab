@@ -49,8 +49,12 @@ MonoBehaviour:
   isPreparingForNextWave: 0
   isBossWave: 0
   enemiesRemaining: 0
-  numberOfEnemiesToSpawn: 5
+  numberOfEnemiesToSpawn: 1
   enemySpawner: {fileID: 0}
+  bossWaveInterval: 5
+  playerHealthRegenPerWave: 10
+  prepTimeInSeconds: 90
+  currentPrepTime: 0
   enemyTypes:
   - enemyPrefab: {fileID: 3355970845525502373, guid: e20765d5fdfc5ed4bafe2084c78fffb3,
       type: 3}
@@ -59,6 +63,11 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 6726502345935617430, guid: e22b4d7ac36c4f043a4f0103700b4d1c,
       type: 3}
     firstEncounter: 2
-    spawnRate: 100
-  bossWaveInterval: 5
-  playerHealthRegenPerWave: 10
+    spawnRate: 50
+  prepeaarWaveEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  startWaveEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  uiPlayerStats: {fileID: 0}
