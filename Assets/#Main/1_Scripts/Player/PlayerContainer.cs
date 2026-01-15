@@ -7,7 +7,7 @@ public class PlayerContainer : MonoBehaviour
     [SerializeField] protected int maxHealth = 100;
     [SerializeField] protected int currentHealth;
 
-    [SerializeField] protected int currentSlurp = 0;
+    [SerializeField] public int currentSlurp = 0;
     [SerializeField] protected int maxSlurp = 100;
     [SerializeField] public int scrapCount = 0;
     //UI stuff
@@ -59,6 +59,8 @@ public class PlayerContainer : MonoBehaviour
     public int GetCurrentSlurp()
     {
         return currentSlurp;
+        UI_PlayerStats uiPlayerStats = FindObjectOfType<UI_PlayerStats>();
+        uiPlayerStats.RefreshSluptAmount();
     }
 
     public void setcurrentSlurp(int amount)

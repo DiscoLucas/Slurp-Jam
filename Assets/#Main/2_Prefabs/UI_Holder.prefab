@@ -571,7 +571,7 @@ MonoBehaviour:
   hpText: {fileID: 1321526108862278446}
   slurpManager: {fileID: 0}
   baseHpText: {fileID: 8626906018629543264}
-  slurpResource: {fileID: 0}
+  slurpResource: {fileID: 1497572892874809705}
   scrapResource: {fileID: 1497572892874809705}
   weapon: {fileID: 0}
   ammoText: {fileID: 4414292960058783070}

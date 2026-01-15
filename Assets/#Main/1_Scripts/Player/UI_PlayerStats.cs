@@ -61,7 +61,12 @@ public class UI_PlayerStats : MonoBehaviour
 
     public void RefreshScrapAmount()
     {
-        scrapResource.text = "Scrap: " + playerContainer.scrapCount.ToString();
+        scrapResource.text = playerContainer.scrapCount.ToString();
+    }
+
+    public void RefreshSluptAmount()
+    {
+        slurpResource.text = playerContainer.currentSlurp.ToString();
     }
 
     private void refreshAll()
