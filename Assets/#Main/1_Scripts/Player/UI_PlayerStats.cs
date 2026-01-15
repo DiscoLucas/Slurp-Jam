@@ -21,6 +21,10 @@ public class UI_PlayerStats : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        playerContainer = FindFirstObjectByType<PlayerContainer>();
+        slurpManager = FindFirstObjectByType<SlurpManager>();
+        weapon = FindFirstObjectByType<PlayerActions>();
+        interactKeyUI = weapon.interactKeyUI;
         refreshAll();
         weapon.possiableInteractEvent.AddListener(ActivateInteractKey);
         weapon.unPossiableInteractEvent.AddListener(DeactivateInteractKey);

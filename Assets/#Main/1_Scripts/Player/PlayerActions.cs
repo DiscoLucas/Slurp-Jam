@@ -27,11 +27,11 @@ public class PlayerActions : MonoBehaviour
     public UnityEvent unPossiableInteractEvent;
     [SerializeField]
     PlacementController placementController;
-    
+    public GameObject interactKeyUI;
 
     void OnEnable()
     {
-        /*foreach(Transform g in gameObject.GetComponentsInChildren<Transform>())
+        foreach(Transform g in gameObject.GetComponentsInChildren<Transform>())
         {
             Inventory.Add(g.gameObject);
         }
@@ -157,7 +157,6 @@ public class PlayerActions : MonoBehaviour
         if (pu != null)
             pu.EnablePickup();
     }
-
     
 
 #region Swapping Weapons
