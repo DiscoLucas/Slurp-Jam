@@ -161,6 +161,13 @@ public class PlayerActions : MonoBehaviour
             pu.EnablePickup();
     }
     
+    public void ResetAllAmmo()
+    {
+        foreach (GameObject g in Inventory)
+        {
+            g.GetComponent<ProjectileSpawner>().ResetAmmo();
+        }
+    }
 
 #region Swapping Weapons
     void SwapWeapon(int direction)
