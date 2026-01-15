@@ -108,3 +108,4 @@ MonoBehaviour:
   usesAmmo: 1
   ammo: 20
   cooldown: 0.5
+  maxAmmo: 20

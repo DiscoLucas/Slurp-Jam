@@ -48,6 +48,7 @@ public class EnemytClass : MonoBehaviour
         //enemyGoal = GameObject.FindGameObjectWithTag("EnemyGoal").transform;
         //Debug.Log("Enemy Goal found: " + enemyGoal.name);
         //navMeshAgent = GetComponent<NavMeshAgent>();
+        enemyGoal = GameObject.FindGameObjectWithTag("EnemyGoal")?.transform;
     }
 
     private void Update()
