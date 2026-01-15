@@ -44,12 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6728b75bb88049479783444492f0f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
-  currentWave: 2
+  currentWave: 0
   isWaveActive: 0
   isPreparingForNextWave: 0
   isBossWave: 0
   enemiesRemaining: 0
-  numberOfEnemiesToSpawn: 20
+  numberOfEnemiesToSpawn: 5
   enemySpawner: {fileID: 0}
   enemyTypes:
   - enemyPrefab: {fileID: 3355970845525502373, guid: e20765d5fdfc5ed4bafe2084c78fffb3,
@@ -60,3 +60,5 @@ MonoBehaviour:
       type: 3}
     firstEncounter: 2
     spawnRate: 100
+  bossWaveInterval: 5
+  playerHealthRegenPerWave: 10

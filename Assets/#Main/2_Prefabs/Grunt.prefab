@@ -143,8 +143,9 @@ MonoBehaviour:
   appearesObject: {fileID: 25463925453051004}
   navMeshAgent: {fileID: 6636706606380751868}
   knockbackForce: 5
-  scrapDropAmount: 5
-  slopDropAmount: 2
+  dropchance: 50
+  scrapMaxDropAmount: 5
+  slopMaxDropAmount: 2
   corpsePrefab: {fileID: 1562112532435634118, guid: 5b17767b412525c489f9abac35525f01,
     type: 3}
   deathSound: {fileID: 0}

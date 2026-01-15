@@ -16,10 +16,14 @@ public class UI_PlayerStats : MonoBehaviour
     [Header("Ammo")]
     public PlayerActions weapon;
     public TextMeshProUGUI ammoText;
+    [Header("Interaction key")]
+    public GameObject interactKeyUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         refreshAll();
+        weapon.possiableInteractEvent.AddListener(ActivateInteractKey);
+        weapon.unPossiableInteractEvent.AddListener(DeactivateInteractKey);
     }
 
     // Update is called once per frame
@@ -62,4 +66,15 @@ public class UI_PlayerStats : MonoBehaviour
         RefreshBaseHealth();
         RefreshScrapAmount();
     }
+
+    void ActivateInteractKey()
+    {
+        interactKeyUI.SetActive(true);
+    }
+
+    void DeactivateInteractKey()
+    {
+        interactKeyUI.SetActive(false);
+    }
+
 }
