@@ -31,7 +31,7 @@ public class EnemytClass : MonoBehaviour
     [SerializeField] protected int scrapMaxDropAmount = 5;
     [SerializeField] protected int slopMaxDropAmount = 2;
     [SerializeField] protected GameObject corpsePrefab;
-
+    [SerializeField] protected ParticleSystem damageEffect;
     //Audio Variables
     [Header("Enemy Sounds")]
     [SerializeField] protected AudioClip deathSound;
@@ -94,7 +94,8 @@ public class EnemytClass : MonoBehaviour
     {
         enemyHealth -= damageToTake;
         Debug.Log(enemyName + " took " + damageToTake + " damage.");
-        
+        if(damageEffect != null)
+         damageEffect?.Play();
         if (enemyHealth <= 0 && !isdead)
         {
             isdead = true;
