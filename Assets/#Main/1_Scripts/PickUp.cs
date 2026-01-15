@@ -23,7 +23,11 @@ public class PickUp : MonoBehaviour
     [SerializeField]
     float moveSpeed = 5f;
 
+    [SerializeField]
+    int amountToGive = 1;
+
     private PlayerActions playerAction;
+    private PlayerContainer playerContainer;
     private bool isMovingToPlayer = false;
     private bool playerInRange = false;
 
@@ -37,9 +41,14 @@ public class PickUp : MonoBehaviour
         if (playerAction == null)
         {
             playerAction = FindFirstObjectByType<PlayerActions>();
+            playerContainer = playerAction.GetComponent<PlayerContainer>();
             if (playerAction == null)
             {
                 Debug.LogError("PickUp script could not find PlayerActions in the scene!", this);
+            }
+            if(playerContainer == null)
+            {
+                Debug.LogError("PickUp script could not find PlayerContainer in the scene!", this);
             }
         }
 
@@ -110,9 +119,11 @@ public class PickUp : MonoBehaviour
         switch (pickUpType)
         {
             case PickUpType.Slurp:
+                playerContainer.changeBaseHealth(amountToGive);
                 Debug.Log("Collected Slurp!");
                 break;
             case PickUpType.Scrap:
+                playerContainer.changeScrap(amountToGive);
                 Debug.Log("Collected Scrap!");
                 break;
             case PickUpType.Carryable:

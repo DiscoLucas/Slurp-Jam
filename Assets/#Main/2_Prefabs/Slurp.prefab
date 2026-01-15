@@ -409,4 +409,5 @@ MonoBehaviour:
   pressToPickUp: 0
   pickUpRange: 1
   moveSpeed: 5
+  amountToGive: 30
   destoryOnPickup: 1
