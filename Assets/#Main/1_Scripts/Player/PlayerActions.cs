@@ -145,6 +145,8 @@ public class PlayerActions : MonoBehaviour
 
         // Update spawner
         ActiveProjectileSpawner = newWeapon.GetComponent<ProjectileSpawner>();
+        UI_PlayerHealth uiPlayerHealth = FindObjectOfType<UI_PlayerHealth>();
+        uiPlayerHealth.RefreshAmmoText();
     }
 
     void OnSwapNext(InputAction.CallbackContext ctx)
@@ -156,5 +158,8 @@ public class PlayerActions : MonoBehaviour
     {
         SwapWeapon(-1);
     }
+
+    //Function that activates and deactivate interact prompt
+
  #endregion
 }

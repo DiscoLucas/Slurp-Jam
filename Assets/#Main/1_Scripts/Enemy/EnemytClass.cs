@@ -17,9 +17,11 @@ public class EnemytClass : MonoBehaviour
     [SerializeField] protected Transform player;
 
     [SerializeField] protected Transform appearesObject;
-    
+    private Rigidbody rb;
+
     //NavMeshAgent for movement
     [SerializeField] protected NavMeshAgent navMeshAgent;
+    [SerializeField] protected float knockbackForce = 5f;
 
 
     //Drop Variables
@@ -32,6 +34,11 @@ public class EnemytClass : MonoBehaviour
     [SerializeField] protected AudioClip deathSound;
     [SerializeField] protected AudioClip attackSound;
     protected AudioSource audioSource;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     private void Start()
     {
@@ -63,6 +70,9 @@ public class EnemytClass : MonoBehaviour
     {
         enemyHealth -= damageToTake;
         Debug.Log(enemyName + " took " + damageToTake + " damage.");
+        //add knockback
+        Vector3 knockbackDirection = (transform.position - player.position).normalized;
+        rb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
 
         if (enemyHealth <= 0)
         {
