@@ -145,8 +145,8 @@ public class PlayerActions : MonoBehaviour
 
         // Update spawner
         ActiveProjectileSpawner = newWeapon.GetComponent<ProjectileSpawner>();
-        UI_PlayerHealth uiPlayerHealth = FindObjectOfType<UI_PlayerHealth>();
-        uiPlayerHealth.RefreshAmmoText();
+        UI_PlayerStats uiPlayerStats = FindObjectOfType<UI_PlayerStats>();
+        uiPlayerStats.RefreshAmmoText();
     }
 
     void OnSwapNext(InputAction.CallbackContext ctx)
