@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 
 public class SlurpManager : MonoBehaviour
 {
@@ -9,34 +10,12 @@ public class SlurpManager : MonoBehaviour
     private int currentHealth = 0;
 
     //Events for other systems
-    public static event Action<int> OnBaseHealthChanged;
-    public static event Action<int> OnBaseDamageTaken;
+    public UnityEvent<int> OnBaseHealthChanged;
+    public UnityEvent<int> OnBaseDamageTaken;
 
-    //Singleton instance
-    public static SlurpManager Instance 
-    {
-        get 
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<SlurpManager>();
-                    if (instance == null)
-                    {
-                        Debug.LogError("No SlurpManager found in the scene.");
-                    }
-            }   
-            return instance;
-        }
-    }
 
     private void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        instance = this;
         currentHealth = maxHealth;
     }
 
@@ -51,7 +30,7 @@ public class SlurpManager : MonoBehaviour
 
         if (actualAdded > 0)
         {
-            OnBaseHealthChanged?.Invoke(currentHealth);
+            OnBaseHealthChanged.Invoke(amount);
             Debug.Log($"Added {actualAdded} slurp to the base. Current Health: {currentHealth}/{maxHealth}");
         }  
     }
