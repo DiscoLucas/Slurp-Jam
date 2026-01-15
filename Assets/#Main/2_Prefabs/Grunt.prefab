@@ -146,7 +146,7 @@ MonoBehaviour:
   dropchance: 50
   scrapMaxDropAmount: 5
   slopMaxDropAmount: 2
-  corpsePrefab: {fileID: 1562112532435634118, guid: 5b17767b412525c489f9abac35525f01,
+  corpsePrefab: {fileID: 3818271652071558375, guid: 506e20c6f5eb1254bac2c12f293b43fb,
     type: 3}
   deathSound: {fileID: 0}
   attackSound: {fileID: 0}
