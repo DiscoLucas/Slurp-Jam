@@ -29,11 +29,11 @@ public class PlayerActions : MonoBehaviour
 
     void OnEnable()
     {
-        /*foreach(Transform g in gameObject.GetComponentsInChildren<Transform>())
+        foreach(Transform g in gameObject.GetComponentsInChildren<Transform>())
         {
-            Inventory.Add(g.gameObject);
+            if(g.GetComponent<ProjectileSpawner>())
+                Inventory.Add(g.gameObject);
         }
-        ActiveProjectileSpawner = Inventory[0].GetComponent<ProjectileSpawner>(); //Very risky, and assumes that we have projectile spawners.*/
 
         Fire.action.started += ctx => isFiring = true;
         Fire.action.canceled += ctx => isFiring = false;
@@ -123,7 +123,6 @@ public class PlayerActions : MonoBehaviour
         if (pu != null)
             pu.EnablePickup();
     }
-
     
 
 #region Swapping Weapons
