@@ -7,6 +7,7 @@ public class ProjectileSpawner : MonoBehaviour
     public bool usesAmmo; //this is only actual for the spatula, might just remove it.
     public int ammo;
     public float cooldown;
+    public int maxAmmo;
 
     public void Fire()
     {
@@ -19,5 +20,10 @@ public class ProjectileSpawner : MonoBehaviour
                 ammo--;
             }
         }
+    }
+
+    public void ResetAmmo()
+    {
+        ammo = maxAmmo;
     }
 }
