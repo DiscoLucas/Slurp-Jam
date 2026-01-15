@@ -23,6 +23,14 @@ public class SlurpManager : MonoBehaviour
     private void Awake()
     {
         currentHealth = maxHealth;
+        setCurrentBaseHealth(maxHealth);
+    }
+
+    void setCurrentBaseHealth(int amount)
+    {
+        currentHealth = Mathf.Clamp(amount, 0, maxHealth);
+        UI_PlayerStats uiPlayerStats = FindObjectOfType<UI_PlayerStats>();
+        uiPlayerStats.RefreshBaseHealth();
     }
 
     void Start()
@@ -52,6 +60,8 @@ public class SlurpManager : MonoBehaviour
         
         int surplus = amount - actualAdded;
         return surplus;
+        UI_PlayerStats uiPlayerStats = FindObjectOfType<UI_PlayerStats>();
+        uiPlayerStats.RefreshBaseHealth();
     }
 
     /// <summary>

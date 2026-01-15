@@ -127,6 +127,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 759097656765105288, guid: 4d2a83ce990d4b242a5ee9409500e9ae,
+        type: 3}
+      propertyPath: m_Name
+      value: Recourse Count Scrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773606345296790236, guid: 4d2a83ce990d4b242a5ee9409500e9ae,
+        type: 3}
+      propertyPath: slurpResource
+      value: 
+      objectReference: {fileID: 984459535}
     - target: {fileID: 2866283588104586567, guid: 4d2a83ce990d4b242a5ee9409500e9ae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -538,6 +548,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
   m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
+--- !u!114 &984459535 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8868556432962141444, guid: 4d2a83ce990d4b242a5ee9409500e9ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 6785291}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1030770562 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1838528757791944318, guid: 91e0d3039d7d8be43986a78c12d577e0,
@@ -1055,7 +1077,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.33333334
+  m_VoxelSize: 0.016666668
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 6fe93814523ffca4897cbd79e952ee88, type: 2}
   m_BuildHeightMesh: 0

@@ -109,3 +109,4 @@ MonoBehaviour:
   ammo: 20
   cooldown: 0.5
   maxAmmo: 20
+  weaponIcon: {fileID: 21300000, guid: f81968e126461bc409b1ba3000f4fac0, type: 3}

@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 5354370196825530902}
   - component: {fileID: 1497572892874809705}
   m_Layer: 5
-  m_Name: Recourse Count 1
+  m_Name: Recourse Count Slurp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 4120897988208982510}
   - component: {fileID: 8868556432962141444}
   m_Layer: 5
-  m_Name: Recourse Count 1
+  m_Name: Recourse Count Scrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -572,7 +572,7 @@ MonoBehaviour:
   slurpManager: {fileID: 0}
   baseHpText: {fileID: 8626906018629543264}
   slurpResource: {fileID: 1497572892874809705}
-  scrapResource: {fileID: 1497572892874809705}
+  scrapResource: {fileID: 8868556432962141444}
   weapon: {fileID: 0}
   ammoText: {fileID: 4414292960058783070}
   interactKeyUI: {fileID: 0}

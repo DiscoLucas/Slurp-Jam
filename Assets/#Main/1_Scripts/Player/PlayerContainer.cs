@@ -24,11 +24,24 @@ public class PlayerContainer : MonoBehaviour
     {
         currentHealth = maxHealth;
         scrapCount = 0;
+        GetCurrentHealth();
+        SlurpManager slurpManager = FindObjectOfType<SlurpManager>();
+        slurpManager.GetCurrentHealth();
+        changeScrap(0);
+        changeSlurpLocalAmount(0);
+        setCurrentHealth(maxHealth);
     }
 
     public int Max
     {
         get { return maxHealth; }
+    }
+
+    public void setCurrentHealth(int amount)
+    {
+        currentHealth = Mathf.Clamp(amount, 0, maxHealth);
+        UI_PlayerStats uiPlayerStats = FindObjectOfType<UI_PlayerStats>();
+        uiPlayerStats.RefreshPlayerHealth();
     }
 
     public int GetCurrentHealth()
@@ -52,7 +65,7 @@ public class PlayerContainer : MonoBehaviour
     {
         currentSlurp = Mathf.Clamp(currentSlurp + amount, 0, maxSlurp);
         UI_PlayerStats uiPlayerStats = FindObjectOfType<UI_PlayerStats>();
-        uiPlayerStats.RefreshBaseHealth();
+        uiPlayerStats.RefreshSluptAmount();
 
     }
 

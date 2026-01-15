@@ -1,6 +1,7 @@
 ﻿using MoreMountains.TopDownEngine;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class UI_PlayerStats : MonoBehaviour
@@ -17,6 +18,7 @@ public class UI_PlayerStats : MonoBehaviour
     [Header("Ammo")]
     public PlayerActions weapon;
     public TextMeshProUGUI ammoText;
+    public Image weaponIconUI;
     [Header("Interaction key")]
     public GameObject interactKeyUI;
     [Header("Wave Timer")]
@@ -69,6 +71,7 @@ public class UI_PlayerStats : MonoBehaviour
 
     public void RefreshAmmoText()
     {
+        weaponIconUI.sprite = weapon.ActiveProjectileSpawner.weaponIcon;
         if (weapon.ActiveProjectileSpawner.usesAmmo)
         {
             ammoText.text = "Ammo: " + weapon.ActiveProjectileSpawner.ammo.ToString();
