@@ -112,6 +112,13 @@ public class EnemytClass : MonoBehaviour
             {
                 player.TakeDamage(enemyDamage);
             }
+        }else if (other.CompareTag("Goal"))
+        {
+            SlurpManager slurpManager = other.GetComponent<SlurpManager>();
+            if (slurpManager != null)
+            {
+                slurpManager.TakeDamage(enemyDamage);
+            }
         }
     }
 
