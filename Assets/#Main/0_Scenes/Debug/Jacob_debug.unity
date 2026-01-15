@@ -312,7 +312,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.33333334
+  m_VoxelSize: 0.016666668
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
@@ -962,6 +962,21 @@ PrefabInstance:
       propertyPath: enemySpawner
       value: 
       objectReference: {fileID: 762976117}
+    - target: {fileID: 2909402744199951252, guid: c9bdead36781e4e4faa74c23fdb90c1c,
+        type: 3}
+      propertyPath: prepTimeInSeconds
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909402744199951252, guid: c9bdead36781e4e4faa74c23fdb90c1c,
+        type: 3}
+      propertyPath: numberOfEnemiesToSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909402744199951252, guid: c9bdead36781e4e4faa74c23fdb90c1c,
+        type: 3}
+      propertyPath: enemyTypes.Array.data[1].spawnRate
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7897622558500174144, guid: c9bdead36781e4e4faa74c23fdb90c1c,
         type: 3}
       propertyPath: m_Name
@@ -1298,7 +1313,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.33333334
+  m_VoxelSize: 0.016666668
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 2996a030e1b743e4d8b2032cee8d11fd, type: 2}
   m_BuildHeightMesh: 0

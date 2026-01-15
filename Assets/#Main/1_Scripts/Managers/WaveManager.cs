@@ -16,10 +16,13 @@ public class WaveManager : MonoBehaviour
     public int numberOfEnemiesToSpawn = 5;
     //public float spawnInterval = 1.0f;
     [SerializeField] private EnemySpawner enemySpawner;
-    [Header("Array of Enemy Types")]
-    [SerializeField] private EnemyType[] enemyTypes;
     [SerializeField] private int bossWaveInterval = 5;
     [SerializeField] private int playerHealthRegenPerWave = 10;
+    [SerializeField] private int prepTimeInSeconds = 10;
+    public int currentPrepTime;
+    [Header("Array of Enemy Types")]
+    [SerializeField] private EnemyType[] enemyTypes;
+    
 
 
     private void Awake()
@@ -40,11 +43,26 @@ public class WaveManager : MonoBehaviour
     {
         isPreparingForNextWave = true;
         // Additional logic for preparing the wave can be added here
+        Invoke("startWave", prepTimeInSeconds); // 5 seconds preparation time
+        // add UI countdown timer here
+        currentPrepTime = prepTimeInSeconds;
+        StartCoroutine(PrepTimeCountdown());
+    }
+
+    private IEnumerator PrepTimeCountdown()
+    {
+        while (currentPrepTime > 0)
+        {
+            Debug.Log("Wave " + (currentWave + 1) + " starting in " + currentPrepTime + " seconds.");
+            yield return new WaitForSeconds(1f);
+            currentPrepTime--;
+        }
     }
 
     private void startWave()
     {
         StartCoroutine(StartWaveCorotine());
+        
     }
     private IEnumerator StartWaveCorotine()
     {
@@ -53,6 +71,7 @@ public class WaveManager : MonoBehaviour
         currentWave++;
 
         numberOfEnemiesToSpawn += currentWave * 2;
+        enemiesRemaining = numberOfEnemiesToSpawn;
 
         for (int i = 0; i < numberOfEnemiesToSpawn; i++)
         {
@@ -65,7 +84,15 @@ public class WaveManager : MonoBehaviour
             yield return new WaitForSeconds(enemySpawner.spawnInterval);
         }
 
-        enemiesRemaining = numberOfEnemiesToSpawn;
+        
+    }
+
+    public void checkEnemiesRemaining()
+    {
+        if (enemiesRemaining == 0)
+        {
+            endWave();
+        }
     }
 
 
@@ -73,10 +100,15 @@ public class WaveManager : MonoBehaviour
     private void endWave()
     {
         isWaveActive = false;
-        enemiesRemaining = 0;
+        //enemiesRemaining = 0;
         // Additional logic for ending the wave can be added here
-        PlayerContainer playerContainer = GetComponent<PlayerContainer>();
-        playerContainer.Heal(playerHealthRegenPerWave);
+        PlayerContainer playerContainer = FindFirstObjectByType<PlayerContainer>();
+        Debug.Log(playerContainer.gameObject.name);
+        playerContainer?.Heal(playerHealthRegenPerWave);
+
+        PlayerActions playerActions = FindFirstObjectByType<PlayerActions>();
+        playerActions.ResetAllAmmo();
+        prepareForWave();
     }
 
     //manually start wave for testing

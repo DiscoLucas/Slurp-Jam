@@ -40,6 +40,8 @@ public class EnemytClass : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        enemyGoal = GameObject.FindGameObjectWithTag("EnemyGoal")?.transform;
+        player = GameObject.FindWithTag("Player")?.transform;
     }
 
     private void Start()
@@ -48,7 +50,7 @@ public class EnemytClass : MonoBehaviour
         //enemyGoal = GameObject.FindGameObjectWithTag("EnemyGoal").transform;
         //Debug.Log("Enemy Goal found: " + enemyGoal.name);
         //navMeshAgent = GetComponent<NavMeshAgent>();
-        enemyGoal = GameObject.FindGameObjectWithTag("EnemyGoal")?.transform;
+        
     }
 
     private void Update()
@@ -65,6 +67,10 @@ public class EnemytClass : MonoBehaviour
     {
         // Logic for enemy death
         Debug.Log(enemyName + " has died.");
+        WaveManager waveManager = FindObjectOfType<WaveManager>();
+        waveManager.enemiesRemaining--;
+        waveManager.checkEnemiesRemaining();
+        Debug.Log("Enemies remaining: " + waveManager.enemiesRemaining);
         // Spawn corpse with Y offset to account for NavMesh base offset
         Vector3 corpsePosition = transform.position;
         if (navMeshAgent != null)
@@ -75,14 +81,15 @@ public class EnemytClass : MonoBehaviour
         Debug.Log("Corpse instantiated at " + corpsePosition + ", corpse actual position: " + corpse.transform.position + ", enemy position: " + transform.position);
         Destroy(gameObject);
     }
-
+    bool isdead = false;
     public virtual void EnemyTakeDamage(int damageToTake)
     {
         enemyHealth -= damageToTake;
         Debug.Log(enemyName + " took " + damageToTake + " damage.");
         
-        if (enemyHealth <= 0)
+        if (enemyHealth <= 0 && !isdead)
         {
+            isdead = true;
             EnemyDeath();
         }
         else
