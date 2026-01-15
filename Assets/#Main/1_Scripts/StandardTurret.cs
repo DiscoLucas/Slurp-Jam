@@ -1,4 +1,5 @@
 using System.Collections;
+using MoreMountains.TopDownEngine;
 using UnityEngine;
 
 public class StandardTurret : MonoBehaviour
@@ -6,6 +7,7 @@ public class StandardTurret : MonoBehaviour
     [Header("Turret Stats")]
     [SerializeField] float fireRate = 1f;
     [SerializeField] float range = 10f;
+    [SerializeField] float audioPitchVariance = 0.1f;
 
     [Header("Idle Movement")]
     [SerializeField] float rotationSpeed = 60f; // degrees per second
@@ -21,6 +23,9 @@ public class StandardTurret : MonoBehaviour
     [SerializeField] Transform firePoint;
     [SerializeField] float projectileSpeed = 20f;
     [SerializeField] string enemyTag = "Enemy";
+
+    Projectile Projectile;
+    AudioSource audioSource;
 
     Transform target;
     float fireCooldown;
@@ -40,6 +45,7 @@ public class StandardTurret : MonoBehaviour
         {
             idleCoroutine = StartCoroutine(IdleBehavior());
         }
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -81,14 +87,23 @@ public class StandardTurret : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
             }
 
-            // Shooting
+            // Shooting when aimed at target
             fireCooldown -= Time.deltaTime;
-            if (fireCooldown <= 0f)
+            if (fireCooldown <= 0f && IsFacingTarget())
             {
                 ShootAtTarget();
                 fireCooldown = 1f / Mathf.Max(0.0001f, fireRate);
             }
         }
+    }
+
+    bool IsFacingTarget()
+    {
+        if (target == null) return false;
+        Vector3 toTarget = (target.position - firePoint.position).normalized;
+        Vector3 firePointForward = firePoint.forward;
+        float angle = Vector3.Angle(firePointForward, toTarget);
+        return angle <= 10f; // within 5 degrees
     }
 
     void FindAndLockTarget()
@@ -185,8 +200,16 @@ public class StandardTurret : MonoBehaviour
         if (bulletPrefab == null || firePoint == null || target == null) return;
         Vector3 dir = (target.position - firePoint.position).normalized;
         GameObject proj = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(dir));
-        Rigidbody rb = proj.GetComponent<Rigidbody>();
-        if (rb != null) rb.linearVelocity = dir * projectileSpeed;
+    
+        // Use the Projectile class properly
+        Projectile projectile = proj.GetComponent<Projectile>();
+        if (projectile != null)
+        {
+            projectile.Speed = projectileSpeed;
+            projectile.SetDirection(dir, Quaternion.LookRotation(dir), true);
+            audioSource.pitch = 1f + Random.Range(-audioPitchVariance, audioPitchVariance);
+            audioSource.PlayOneShot(audioSource.clip);
+        }
     }
 
 }

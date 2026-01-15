@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-public class UI_PlayerHealth : MonoBehaviour
+public class UI_PlayerStats : MonoBehaviour
 {
     [Header("Player Health")]
     public PlayerContainer playerContainer;
@@ -19,9 +19,7 @@ public class UI_PlayerHealth : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        RefreshPlayerHealth();
-        RefreshAmmoText();
-        RefreshBaseHealth();
+        refreshAll();
     }
 
     // Update is called once per frame
@@ -32,7 +30,7 @@ public class UI_PlayerHealth : MonoBehaviour
 
     public void RefreshPlayerHealth()
     {
-        hpText.text = "Health: " + playerContainer.GetCurrentHealth().ToString() + " / " + playerContainer.Max;
+        hpText.text = "HP: " + playerContainer.GetCurrentHealth().ToString() + " / " + playerContainer.Max;
     }
 
     public void RefreshAmmoText()
@@ -50,5 +48,18 @@ public class UI_PlayerHealth : MonoBehaviour
     public void RefreshBaseHealth()
     {
         baseHpText.text = "Base Health: " + slurpManager.GetCurrentHealth().ToString() + " / " + slurpManager.GetMaxHealth().ToString();
+    }
+
+    public void RefreshScrapAmount()
+    {
+        scrapResource.text = "Scrap: " + playerContainer.scrapCount.ToString();
+    }
+
+    private void refreshAll()
+    {
+        RefreshPlayerHealth();
+        RefreshAmmoText();
+        RefreshBaseHealth();
+        RefreshScrapAmount();
     }
 }

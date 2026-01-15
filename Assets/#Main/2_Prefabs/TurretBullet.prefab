@@ -5002,7 +5002,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   LifeTime: 2
-  FaceDirection: 0
+  FaceDirection: 1
   FaceMovement: 0
   MovementVector: 0
   Speed: 500
@@ -5010,7 +5010,7 @@ MonoBehaviour:
   Direction: {x: -1, y: 0, z: 0}
   DirectionCanBeChangedBySpawner: 1
   FlipValue: {x: -1, y: 1, z: 1}
-  ProjectileIsFacingRight: 1
+  ProjectileIsFacingRight: 0
   InitialInvulnerabilityDuration: 0
   DamageOwner: 0
 --- !u!114 &114102311241470466
@@ -11270,6 +11270,16 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3036081855788999947, guid: 8c6c4b46f25c8674c836660af8f3582d,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3278317191066349497, guid: 8c6c4b46f25c8674c836660af8f3582d,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4392642776950485622, guid: 8c6c4b46f25c8674c836660af8f3582d,
         type: 3}
       propertyPath: lengthInSec
@@ -11279,6 +11289,16 @@ PrefabInstance:
         type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028473799459125803, guid: 8c6c4b46f25c8674c836660af8f3582d,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015340367056428161, guid: 8c6c4b46f25c8674c836660af8f3582d,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6702227914809282779, guid: 8c6c4b46f25c8674c836660af8f3582d,
         type: 3}
@@ -11360,10 +11380,20 @@ PrefabInstance:
       propertyPath: ShapeModule.angle
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8513209184108671709, guid: 8c6c4b46f25c8674c836660af8f3582d,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8958866738862430482, guid: 8c6c4b46f25c8674c836660af8f3582d,
         type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9002853466149593111, guid: 8c6c4b46f25c8674c836660af8f3582d,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
