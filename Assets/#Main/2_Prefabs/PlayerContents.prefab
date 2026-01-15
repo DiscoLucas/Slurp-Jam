@@ -147,7 +147,7 @@ MonoBehaviour:
   unPossiableInteractEvent:
     m_PersistentCalls:
       m_Calls: []
-  interactKeyUI: {fileID: 1838528757791944318}
+  interactKeyUI: {fileID: 0}
 --- !u!114 &5177417570604499460
 MonoBehaviour:
   m_ObjectHideFlags: 0

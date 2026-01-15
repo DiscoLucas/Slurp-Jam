@@ -76,7 +76,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5810671066784740483, guid: 536aab7ff2b862743872bfe5dd8ab56d, type: 3}
+    - {fileID: 3277695123880686247, guid: 536aab7ff2b862743872bfe5dd8ab56d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7061965033231248001, guid: 536aab7ff2b862743872bfe5dd8ab56d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7109154138953426860}
   m_SourcePrefab: {fileID: 100100000, guid: 536aab7ff2b862743872bfe5dd8ab56d, type: 3}
+--- !u!1 &644702436754949327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2918493382730905849, guid: 536aab7ff2b862743872bfe5dd8ab56d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2338180984565627958}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4788383033367533239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7061965033231248001, guid: 536aab7ff2b862743872bfe5dd8ab56d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2338180984565627958}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7109154138953426860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4788383033367533239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe7282920d8142e49997cc0414b1d2b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityAnimatorStatic
+  spriteObject: {fileID: 644702436754949327}
+  forwardSprite: {fileID: 21300000, guid: 2cc42ec0f10e9604fa5e7cacca758871, type: 3}
+  backSprite: {fileID: 21300000, guid: 2cc42ec0f10e9604fa5e7cacca758871, type: 3}
+  leftSprite: {fileID: 21300000, guid: 2cc42ec0f10e9604fa5e7cacca758871, type: 3}
+  rightSprite: {fileID: 21300000, guid: 2cc42ec0f10e9604fa5e7cacca758871, type: 3}

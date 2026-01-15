@@ -25,6 +25,7 @@ public class UI_PlayerStats : MonoBehaviour
         slurpManager = FindFirstObjectByType<SlurpManager>();
         weapon = FindFirstObjectByType<PlayerActions>();
         interactKeyUI = weapon.interactKeyUI;
+        interactKeyUI.SetActive(false);
         refreshAll();
         weapon.possiableInteractEvent.AddListener(ActivateInteractKey);
         weapon.unPossiableInteractEvent.AddListener(DeactivateInteractKey);
@@ -73,12 +74,12 @@ public class UI_PlayerStats : MonoBehaviour
 
     void ActivateInteractKey()
     {
-        interactKeyUI.SetActive(true);
+        interactKeyUI?.SetActive(true);
     }
 
     void DeactivateInteractKey()
     {
-        interactKeyUI.SetActive(false);
+        interactKeyUI?.SetActive(false);
     }
 
 }

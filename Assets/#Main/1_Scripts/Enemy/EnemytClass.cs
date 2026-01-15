@@ -71,7 +71,7 @@ public class EnemytClass : MonoBehaviour
             corpsePosition.y += navMeshAgent.baseOffset;
         }
         GameObject corpse = GameObject.Instantiate(corpsePrefab, corpsePosition, transform.rotation);
-        Debug.Log("Corpse instantiated at " + corpsePosition + ", corpse actual position: " + corpse.transform.position);
+        Debug.Log("Corpse instantiated at " + corpsePosition + ", corpse actual position: " + corpse.transform.position + ", enemy position: " + transform.position);
         Destroy(gameObject);
     }
 

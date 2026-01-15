@@ -406,6 +406,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
   m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_ActionId: 351f2ccd-1f9f-44bf-9bec-d62ac5c5f408
+--- !u!20 &686706325 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 425165229537740573, guid: 91e0d3039d7d8be43986a78c12d577e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6363410131843543147}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &912487202
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +538,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
   m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
+--- !u!1 &1030770562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1838528757791944318, guid: 91e0d3039d7d8be43986a78c12d577e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6363410131843543147}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1292936692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,6 +1300,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1184603653365872974, guid: 91e0d3039d7d8be43986a78c12d577e0,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 686706325}
     - target: {fileID: 5403795840124206196, guid: 91e0d3039d7d8be43986a78c12d577e0,
         type: 3}
       propertyPath: Dash
@@ -1327,7 +1344,7 @@ PrefabInstance:
         type: 3}
       propertyPath: interactKeyUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1030770562}
     - target: {fileID: 6182627143281970395, guid: 91e0d3039d7d8be43986a78c12d577e0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1376,11 +1393,6 @@ PrefabInstance:
     - target: {fileID: 6182627143281970395, guid: 91e0d3039d7d8be43986a78c12d577e0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7188014300108868260, guid: 91e0d3039d7d8be43986a78c12d577e0,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8445219478452472505, guid: 91e0d3039d7d8be43986a78c12d577e0,
