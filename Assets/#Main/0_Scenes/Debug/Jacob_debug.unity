@@ -1339,6 +1339,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 804674696483137815, guid: 4d2a83ce990d4b242a5ee9409500e9ae,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 1773606345296790236, guid: 4d2a83ce990d4b242a5ee9409500e9ae,
         type: 3}
       propertyPath: weapon
@@ -1448,6 +1453,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403994572885258141, guid: 4d2a83ce990d4b242a5ee9409500e9ae,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 541.59
       objectReference: {fileID: 0}
     - target: {fileID: 4739932046139915500, guid: 4d2a83ce990d4b242a5ee9409500e9ae,
         type: 3}
