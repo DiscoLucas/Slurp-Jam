@@ -33,8 +33,15 @@ public class PlayerActions : MonoBehaviour
     {
         foreach(Transform g in gameObject.GetComponentsInChildren<Transform>())
         {
-            if(g.GetComponent<ProjectileSpawner>())
+            if(g.GetComponent<ProjectileSpawner>()){
                 Inventory.Add(g.gameObject);
+                g.gameObject.SetActive(false);
+            }
+        }
+        if(Inventory[0])
+        {
+            ActiveProjectileSpawner = Inventory[0].GetComponent<ProjectileSpawner>();
+            Inventory[0].SetActive(true);
         }
 
         Fire.action.started += ctx => isFiring = true;
