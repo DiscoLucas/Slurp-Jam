@@ -76,6 +76,7 @@ public class MeatGrinder : MonoBehaviour
                 playerActions.pirrorityInteraction = true;
                 Debug.Log("Player in range to interact with MeatGrinder");
                 playerActions.Interact.action.started += startGrindWithBody;
+                playerActions.possiableInteractEvent.Invoke();
             }
         }
     }
@@ -88,6 +89,7 @@ public class MeatGrinder : MonoBehaviour
                 playerActions.pirrorityInteraction = false;
                 Debug.Log("Player out of range to interact with MeatGrinder");
                 playerActions.Interact.action.started -= startGrindWithBody;
+                playerActions.unPossiableInteractEvent.Invoke();
             }
         }
     }
