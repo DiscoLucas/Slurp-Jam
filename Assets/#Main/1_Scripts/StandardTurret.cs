@@ -1,4 +1,5 @@
 using System.Collections;
+using MoreMountains.TopDownEngine;
 using UnityEngine;
 
 public class StandardTurret : MonoBehaviour
@@ -21,6 +22,8 @@ public class StandardTurret : MonoBehaviour
     [SerializeField] Transform firePoint;
     [SerializeField] float projectileSpeed = 20f;
     [SerializeField] string enemyTag = "Enemy";
+
+    Projectile Projectile;
 
     Transform target;
     float fireCooldown;
@@ -185,8 +188,14 @@ public class StandardTurret : MonoBehaviour
         if (bulletPrefab == null || firePoint == null || target == null) return;
         Vector3 dir = (target.position - firePoint.position).normalized;
         GameObject proj = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(dir));
-        Rigidbody rb = proj.GetComponent<Rigidbody>();
-        if (rb != null) rb.linearVelocity = dir * projectileSpeed;
+    
+        // Use the Projectile class properly
+        Projectile projectile = proj.GetComponent<Projectile>();
+        if (projectile != null)
+        {
+            projectile.Speed = projectileSpeed;
+            projectile.SetDirection(dir, Quaternion.LookRotation(dir), true);
+        }
     }
 
 }
