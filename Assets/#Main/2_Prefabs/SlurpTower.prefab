@@ -125,9 +125,10 @@ GameObject:
   - component: {fileID: 284478873095294691}
   - component: {fileID: 1167955822683888631}
   - component: {fileID: 7126950710999731329}
+  - component: {fileID: 3501117797826473212}
   m_Layer: 0
   m_Name: SlurpTower
-  m_TagString: Untagged
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,8 +240,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47a051bd9cb6794bb64c3217ed251a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlurpManager
+  playerActions: {fileID: 0}
+  playerContainer: {fileID: 0}
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 50
   OnBaseHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -250,6 +253,33 @@ MonoBehaviour:
   OnBaseDestroyed:
     m_PersistentCalls:
       m_Calls: []
+--- !u!54 &3501117797826473212
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076936634947068700}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &200659933010255318
 PrefabInstance:
   m_ObjectHideFlags: 0
