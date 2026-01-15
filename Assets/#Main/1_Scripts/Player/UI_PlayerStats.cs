@@ -26,6 +26,9 @@ public class UI_PlayerStats : MonoBehaviour
         weapon = FindFirstObjectByType<PlayerActions>();
         interactKeyUI = weapon.interactKeyUI;
         interactKeyUI.SetActive(false);
+        slurpManager.OnBaseDamageTaken.AddListener(refreshHealthAll);
+        slurpManager.OnBaseHealthChanged.AddListener(refreshHealthAll);
+        slurpManager.OnBaseDestroyed.AddListener(refreshAll);
         refreshAll();
         weapon.possiableInteractEvent.AddListener(ActivateInteractKey);
         weapon.unPossiableInteractEvent.AddListener(DeactivateInteractKey);
@@ -68,7 +71,10 @@ public class UI_PlayerStats : MonoBehaviour
     {
         slurpResource.text = playerContainer.currentSlurp.ToString();
     }
-
+    private void refreshHealthAll(int n)
+    {
+        refreshAll();
+    }
     private void refreshAll()
     {
         RefreshPlayerHealth();

@@ -65,6 +65,7 @@ public class PlayerActions : MonoBehaviour
             SwapNext.action.performed -= OnSwapNext;
         if (SwapPrev != null)
             SwapPrev.action.performed -= OnSwapPrev;
+        Interact.action.started -= OnInteract;
     }
 
     void Update()
