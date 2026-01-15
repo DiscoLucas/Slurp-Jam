@@ -25,6 +25,8 @@ public class PlayerActions : MonoBehaviour
     public List<GameObject> Inventory;
     public UnityEvent possiableInteractEvent;
     public UnityEvent unPossiableInteractEvent;
+
+    public GameObject interactKeyUI;
     
 
     void OnEnable()
