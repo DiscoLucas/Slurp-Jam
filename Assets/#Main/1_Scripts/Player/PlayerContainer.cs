@@ -7,7 +7,9 @@ public class PlayerContainer : MonoBehaviour
     [SerializeField] protected int maxHealth = 100;
     [SerializeField] protected int currentHealth;
 
-    [SerializeField] protected int scrapCount = 0;
+    [SerializeField] protected int currentSlurp = 0;
+    [SerializeField] protected int maxSlurp = 100;
+    [SerializeField] public int scrapCount = 0;
     //UI stuff
 
     void Start()
@@ -21,6 +23,7 @@ public class PlayerContainer : MonoBehaviour
     private void Awake()
     {
         currentHealth = maxHealth;
+        scrapCount = 0;
     }
 
     public int Max
@@ -36,6 +39,8 @@ public class PlayerContainer : MonoBehaviour
     public void changeScrap(int amount)
     {
         scrapCount += amount;
+        UI_PlayerStats uiPlayerStats = FindObjectOfType<UI_PlayerStats>();
+        uiPlayerStats.RefreshScrapAmount();
     }
 
     public bool HasEnoughScrap(int amount)
@@ -43,25 +48,33 @@ public class PlayerContainer : MonoBehaviour
         return scrapCount >= amount;
     }
 
-    public void changeBaseHealth(int amount)
+    public void changeSlurpLocalAmount(int amount)
     {
-        if(amount > 0)
-        {
-            slurpManager.AddSlurp(amount);
-        }
-        else if(amount < 0)
-        {
-            slurpManager.TakeDamage(amount);
-        }
+        currentSlurp = Mathf.Clamp(currentSlurp + amount, 0, maxSlurp);
+        UI_PlayerStats uiPlayerStats = FindObjectOfType<UI_PlayerStats>();
+        uiPlayerStats.RefreshBaseHealth();
+
     }
+
+    public int GetCurrentSlurp()
+    {
+        return currentSlurp;
+    }
+
+    public void setcurrentSlurp(int amount)
+    {
+        currentSlurp = Mathf.Clamp(amount, 0, maxSlurp);
+    }
+
     //player death
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        UI_PlayerHealth uiPlayerHealth = FindObjectOfType<UI_PlayerHealth>();
-        uiPlayerHealth.RefreshPlayerHealth();
+        UI_PlayerStats uiPlayerStats = FindObjectOfType<UI_PlayerStats>();
+        uiPlayerStats.RefreshPlayerHealth();
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
             Die();
         }
     }
@@ -76,6 +89,8 @@ public class PlayerContainer : MonoBehaviour
     public void Heal(int amount)
     {
         currentHealth += amount;
+        UI_PlayerStats uiPlayerStats = FindObjectOfType<UI_PlayerStats>();
+        uiPlayerStats.RefreshPlayerHealth();
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;

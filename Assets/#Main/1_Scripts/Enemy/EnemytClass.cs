@@ -25,8 +25,10 @@ public class EnemytClass : MonoBehaviour
 
 
     //Drop Variables
-    [SerializeField] protected int scrapDropAmount = 5;
-    [SerializeField] protected int slopDropAmount = 2;
+    [Range(1,100)]
+    [SerializeField] protected int dropchance = 50;
+    [SerializeField] protected int scrapMaxDropAmount = 5;
+    [SerializeField] protected int slopMaxDropAmount = 2;
     [SerializeField] protected GameObject corpsePrefab;
 
     //Audio Variables
@@ -63,6 +65,7 @@ public class EnemytClass : MonoBehaviour
         // Logic for enemy death
         Debug.Log(enemyName + " has died.");
         GameObject.Instantiate(corpsePrefab, transform.position, transform.rotation);
+        Debug.Log("Corpse instantiated at " + transform.position);
         Destroy(gameObject);
     }
 
@@ -70,13 +73,15 @@ public class EnemytClass : MonoBehaviour
     {
         enemyHealth -= damageToTake;
         Debug.Log(enemyName + " took " + damageToTake + " damage.");
-        //add knockback
-        Vector3 knockbackDirection = (transform.position - player.position).normalized;
-        rb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
-
+        
         if (enemyHealth <= 0)
         {
             EnemyDeath();
+        }
+        else
+        {
+            Vector3 knockbackDirection = (transform.position - player.position).normalized;
+            rb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
         }
     }
 

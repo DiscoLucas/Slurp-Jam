@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-public class UI_PlayerHealth : MonoBehaviour
+public class UI_PlayerStats : MonoBehaviour
 {
     [Header("Player Health")]
     public PlayerContainer playerContainer;
@@ -16,12 +16,14 @@ public class UI_PlayerHealth : MonoBehaviour
     [Header("Ammo")]
     public PlayerActions weapon;
     public TextMeshProUGUI ammoText;
+    [Header("Interaction key")]
+    public GameObject interactKeyUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        RefreshPlayerHealth();
-        RefreshAmmoText();
-        RefreshBaseHealth();
+        refreshAll();
+        weapon.possiableInteractEvent.AddListener(ActivateInteractKey);
+        weapon.unPossiableInteractEvent.AddListener(DeactivateInteractKey);
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class UI_PlayerHealth : MonoBehaviour
 
     public void RefreshPlayerHealth()
     {
-        hpText.text = "Health: " + playerContainer.GetCurrentHealth().ToString() + " / " + playerContainer.Max;
+        hpText.text = "HP: " + playerContainer.GetCurrentHealth().ToString() + " / " + playerContainer.Max;
     }
 
     public void RefreshAmmoText()
@@ -51,4 +53,28 @@ public class UI_PlayerHealth : MonoBehaviour
     {
         baseHpText.text = "Base Health: " + slurpManager.GetCurrentHealth().ToString() + " / " + slurpManager.GetMaxHealth().ToString();
     }
+
+    public void RefreshScrapAmount()
+    {
+        scrapResource.text = "Scrap: " + playerContainer.scrapCount.ToString();
+    }
+
+    private void refreshAll()
+    {
+        RefreshPlayerHealth();
+        RefreshAmmoText();
+        RefreshBaseHealth();
+        RefreshScrapAmount();
+    }
+
+    void ActivateInteractKey()
+    {
+        interactKeyUI.SetActive(true);
+    }
+
+    void DeactivateInteractKey()
+    {
+        interactKeyUI.SetActive(false);
+    }
+
 }

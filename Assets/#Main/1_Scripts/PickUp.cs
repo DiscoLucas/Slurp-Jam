@@ -69,11 +69,13 @@ public class PickUp : MonoBehaviour
         if (pressToPickUp){
             if(distance <= pickUpRange){
                 playerAction.pirrorityInteraction = true;
-                playerAction.Interact.action.started += clickPickup; 
+                playerAction.Interact.action.started += clickPickup;
+                playerAction.possiableInteractEvent.Invoke(); 
                 unSubcribedInteraction = true;
             }else if(unSubcribedInteraction){
                 playerAction.pirrorityInteraction = false;
                 playerAction.Interact.action.started -= clickPickup;
+                playerAction.unPossiableInteractEvent.Invoke();
                 unSubcribedInteraction = false;
             }
 
@@ -119,7 +121,7 @@ public class PickUp : MonoBehaviour
         switch (pickUpType)
         {
             case PickUpType.Slurp:
-                playerContainer.changeBaseHealth(amountToGive);
+                playerContainer.changeSlurpLocalAmount(amountToGive);
                 Debug.Log("Collected Slurp!");
                 break;
             case PickUpType.Scrap:
