@@ -596,12 +596,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292936692}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1373516288 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7188014300108868260, guid: 91e0d3039d7d8be43986a78c12d577e0,
-    type: 3}
-  m_PrefabInstance: {fileID: 6363410131843543147}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1411953935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1339,11 +1333,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 804674696483137815, guid: 4d2a83ce990d4b242a5ee9409500e9ae,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 1773606345296790236, guid: 4d2a83ce990d4b242a5ee9409500e9ae,
         type: 3}
       propertyPath: weapon
@@ -1358,7 +1347,7 @@ PrefabInstance:
         type: 3}
       propertyPath: interactKeyUI
       value: 
-      objectReference: {fileID: 1373516288}
+      objectReference: {fileID: 0}
     - target: {fileID: 1773606345296790236, guid: 4d2a83ce990d4b242a5ee9409500e9ae,
         type: 3}
       propertyPath: playerContainer
@@ -1453,11 +1442,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403994572885258141, guid: 4d2a83ce990d4b242a5ee9409500e9ae,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 541.59
       objectReference: {fileID: 0}
     - target: {fileID: 4739932046139915500, guid: 4d2a83ce990d4b242a5ee9409500e9ae,
         type: 3}
