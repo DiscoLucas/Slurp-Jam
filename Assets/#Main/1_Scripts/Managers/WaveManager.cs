@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using System.Collections;
 using System.Linq;
+using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
@@ -18,11 +19,14 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private int bossWaveInterval = 5;
     [SerializeField] private int playerHealthRegenPerWave = 10;
-    [SerializeField] private int prepTimeInSeconds = 10;
+    [SerializeField] private int prepTimeInSeconds = 90;
     public int currentPrepTime;
     [Header("Array of Enemy Types")]
     [SerializeField] private EnemyType[] enemyTypes;
-    
+
+    public UnityEvent<int> prepeaarWaveEvent;
+    public UnityEvent startWaveEvent;
+    public UI_PlayerStats uiPlayerStats;
 
 
     private void Awake()
@@ -43,10 +47,12 @@ public class WaveManager : MonoBehaviour
     {
         isPreparingForNextWave = true;
         // Additional logic for preparing the wave can be added here
+        prepeaarWaveEvent.Invoke(0);
         Invoke("startWave", prepTimeInSeconds); // 5 seconds preparation time
         // add UI countdown timer here
         currentPrepTime = prepTimeInSeconds;
         StartCoroutine(PrepTimeCountdown());
+        
     }
 
     private IEnumerator PrepTimeCountdown()
@@ -56,11 +62,15 @@ public class WaveManager : MonoBehaviour
             Debug.Log("Wave " + (currentWave + 1) + " starting in " + currentPrepTime + " seconds.");
             yield return new WaitForSeconds(1f);
             currentPrepTime--;
+            yield return new WaitForEndOfFrame();
+            uiPlayerStats.countdown(currentPrepTime);
+
         }
     }
 
     private void startWave()
     {
+        startWaveEvent.Invoke();
         StartCoroutine(StartWaveCorotine());
         
     }

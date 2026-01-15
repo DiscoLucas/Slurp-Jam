@@ -1,6 +1,7 @@
 ﻿using MoreMountains.TopDownEngine;
 using TMPro;
 using UnityEngine;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class UI_PlayerStats : MonoBehaviour
 {
@@ -18,12 +19,17 @@ public class UI_PlayerStats : MonoBehaviour
     public TextMeshProUGUI ammoText;
     [Header("Interaction key")]
     public GameObject interactKeyUI;
+    [Header("Wave Timer")]
+    public TextMeshProUGUI prepTimeText;
+    WaveManager waveManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerContainer = FindFirstObjectByType<PlayerContainer>();
         slurpManager = FindFirstObjectByType<SlurpManager>();
         weapon = FindFirstObjectByType<PlayerActions>();
+        waveManager = FindFirstObjectByType<WaveManager>();
+        waveManager.uiPlayerStats = this;
         interactKeyUI = weapon.interactKeyUI;
         interactKeyUI.SetActive(false);
         slurpManager.OnBaseDamageTaken.AddListener(refreshHealthAll);
@@ -32,12 +38,28 @@ public class UI_PlayerStats : MonoBehaviour
         refreshAll();
         weapon.possiableInteractEvent.AddListener(ActivateInteractKey);
         weapon.unPossiableInteractEvent.AddListener(DeactivateInteractKey);
+        waveManager.prepeaarWaveEvent.AddListener(preparWaveUI);
+        waveManager.startWaveEvent.AddListener(startWaveUI);
+        prepTimeText.gameObject.SetActive(false);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         //RefreshPlayerHealth();
+    }
+    public void startWaveUI()
+    {
+        prepTimeText.gameObject.SetActive(false);
+    }
+    public void preparWaveUI(int counter) 
+    {
+        prepTimeText.gameObject.SetActive(true);
+    }
+
+    public void countdown(int counter) {
+        prepTimeText.text = "Wave " + (waveManager.currentWave + 1) + " starting in " + counter + " seconds.";
     }
 
     public void RefreshPlayerHealth()
