@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class SlurpManager : MonoBehaviour
 {
     [Header("player Reference")]
-    PlayerActions playerActions;
-    PlayerContainer playerContainer;
+    [SerializeField] PlayerActions playerActions;
+    [SerializeField] PlayerContainer playerContainer;
 
     [Header("Health Settings")]
     [SerializeField] private int maxHealth = 100;
@@ -80,12 +80,14 @@ public class SlurpManager : MonoBehaviour
     } 
     public void DepostietSlurp(InputAction.CallbackContext context)
     {
-        int slurpcount = playerContainer.GetCurrentSlurp();
+        Debug.Log("Depositing Slurp");
+        int slurpplus = AddSlurp(playerContainer.GetCurrentSlurp());
+        playerContainer.setcurrentSlurp(slurpplus);
         
     }
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("MeatGrinder trigger entered by " + other.name);
+        Debug.Log("SLurp trigger entered by " + other.name);
         if(other.CompareTag("Player")){
             if(playerActions == null)
             {
@@ -94,7 +96,7 @@ public class SlurpManager : MonoBehaviour
             }
             if(playerActions != null){
                 playerActions.pirrorityInteraction = true;
-                Debug.Log("Player in range to interact with MeatGrinder");
+                Debug.Log("Player in range to interact with SLurp");
                 playerActions.Interact.action.started += DepostietSlurp;
             }
         }
@@ -102,13 +104,14 @@ public class SlurpManager : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("MeatGrinder trigger exited by " + other.name);
+        Debug.Log("SLurp trigger exited by " + other.name);
         if(other.CompareTag("Player")){
             if(playerActions != null){
                 playerActions.pirrorityInteraction = false;
-                Debug.Log("Player out of range to interact with MeatGrinder");
+                Debug.Log("Player out of range to interact with SLurp");
                 playerActions.Interact.action.started -= DepostietSlurp;
                 playerActions.unPossiableInteractEvent.Invoke();
+                playerActions = null;
             }
         }
     }
