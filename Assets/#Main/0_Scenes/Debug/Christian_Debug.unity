@@ -769,6 +769,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HorseArcher
       objectReference: {fileID: 0}
+    - target: {fileID: 6726502345935617430, guid: e22b4d7ac36c4f043a4f0103700b4d1c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8234700653935794632, guid: e22b4d7ac36c4f043a4f0103700b4d1c,
         type: 3}
       propertyPath: player
@@ -1322,7 +1327,7 @@ PrefabInstance:
         type: 3}
       propertyPath: interactKeyUI
       value: 
-      objectReference: {fileID: 6363410131843543148}
+      objectReference: {fileID: 0}
     - target: {fileID: 6182627143281970395, guid: 91e0d3039d7d8be43986a78c12d577e0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1388,12 +1393,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91e0d3039d7d8be43986a78c12d577e0, type: 3}
---- !u!1 &6363410131843543148 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7188014300108868260, guid: 91e0d3039d7d8be43986a78c12d577e0,
-    type: 3}
-  m_PrefabInstance: {fileID: 6363410131843543147}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

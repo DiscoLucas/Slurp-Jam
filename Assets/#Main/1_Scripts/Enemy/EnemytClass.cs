@@ -64,8 +64,14 @@ public class EnemytClass : MonoBehaviour
     {
         // Logic for enemy death
         Debug.Log(enemyName + " has died.");
-        GameObject.Instantiate(corpsePrefab, transform.position, transform.rotation);
-        Debug.Log("Corpse instantiated at " + transform.position);
+        // Spawn corpse with Y offset to account for NavMesh base offset
+        Vector3 corpsePosition = transform.position;
+        if (navMeshAgent != null)
+        {
+            corpsePosition.y += navMeshAgent.baseOffset;
+        }
+        GameObject corpse = GameObject.Instantiate(corpsePrefab, corpsePosition, transform.rotation);
+        Debug.Log("Corpse instantiated at " + corpsePosition + ", corpse actual position: " + corpse.transform.position);
         Destroy(gameObject);
     }
 
