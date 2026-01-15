@@ -47,8 +47,6 @@ public class SlurpManager : MonoBehaviour
         OnBaseDamageTaken?.Invoke(damageAmount);
 
         Debug.Log($"Base took {damageAmount} damage. Current Health: {currentHealth}/{maxHealth}");
-        UI_PlayerStats uiPlayerStats = FindObjectOfType<UI_PlayerStats>();
-        uiPlayerStats.RefreshBaseHealth();
 
         //Base is destroyed when health reaches zero
         if (currentHealth <= 0)
