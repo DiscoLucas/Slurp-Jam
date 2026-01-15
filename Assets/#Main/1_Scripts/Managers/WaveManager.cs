@@ -47,7 +47,7 @@ public class WaveManager : MonoBehaviour
     {
         isPreparingForNextWave = true;
         // Additional logic for preparing the wave can be added here
-        prepeaarWaveEvent.Invoke(0);
+        //prepeaarWaveEvent.Invoke(0);
         Invoke("startWave", prepTimeInSeconds); // 5 seconds preparation time
         // add UI countdown timer here
         currentPrepTime = prepTimeInSeconds;
@@ -70,9 +70,9 @@ public class WaveManager : MonoBehaviour
 
     private void startWave()
     {
-        startWaveEvent.Invoke();
         StartCoroutine(StartWaveCorotine());
-        
+        uiPlayerStats.prepTimeText.gameObject.SetActive(false);
+
     }
     private IEnumerator StartWaveCorotine()
     {
@@ -110,6 +110,7 @@ public class WaveManager : MonoBehaviour
     private void endWave()
     {
         isWaveActive = false;
+        uiPlayerStats.prepTimeText.gameObject.SetActive(true);
         //enemiesRemaining = 0;
         // Additional logic for ending the wave can be added here
         PlayerContainer playerContainer = FindFirstObjectByType<PlayerContainer>();

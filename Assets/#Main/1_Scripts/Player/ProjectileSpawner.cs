@@ -8,6 +8,7 @@ public class ProjectileSpawner : MonoBehaviour
     public int ammo;
     public float cooldown;
     public int maxAmmo;
+    public Sprite weaponIcon;
 
     public void Fire()
     {
