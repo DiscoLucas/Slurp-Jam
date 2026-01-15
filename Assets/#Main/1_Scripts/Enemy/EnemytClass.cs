@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.Mathematics;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemytClass : MonoBehaviour
@@ -37,6 +38,9 @@ public class EnemytClass : MonoBehaviour
     [SerializeField] protected AudioClip attackSound;
     protected AudioSource audioSource;
 
+    //Dette er det grummeste kode længe jeg har skrevet i mit liv (altså startY lortet)
+    float startY = 0;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -50,7 +54,8 @@ public class EnemytClass : MonoBehaviour
         //enemyGoal = GameObject.FindGameObjectWithTag("EnemyGoal").transform;
         //Debug.Log("Enemy Goal found: " + enemyGoal.name);
         //navMeshAgent = GetComponent<NavMeshAgent>();
-        
+        enemyGoal = GameObject.FindGameObjectWithTag("EnemyGoal")?.transform;
+        startY = transform.position.y;
     }
 
     private void Update()
@@ -75,9 +80,12 @@ public class EnemytClass : MonoBehaviour
         Vector3 corpsePosition = transform.position;
         if (navMeshAgent != null)
         {
-            corpsePosition.y += navMeshAgent.baseOffset;
+            if(corpsePosition.y < navMeshAgent.baseOffset)
+                corpsePosition.y += navMeshAgent.baseOffset;
+            if(startY > corpsePosition.y)
+                corpsePosition.y = startY;
         }
-        GameObject corpse = GameObject.Instantiate(corpsePrefab, corpsePosition, transform.rotation);
+        GameObject corpse = GameObject.Instantiate(corpsePrefab, corpsePosition, quaternion.identity);
         Debug.Log("Corpse instantiated at " + corpsePosition + ", corpse actual position: " + corpse.transform.position + ", enemy position: " + transform.position);
         Destroy(gameObject);
     }
