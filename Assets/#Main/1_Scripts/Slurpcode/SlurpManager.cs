@@ -39,7 +39,7 @@ public class SlurpManager : MonoBehaviour
     /// Returns the actual damage dealt
     public int TakeDamage(int damageAmount)
     {
-        if (damage <=0) return 0;
+        if (damageAmount <=0) return 0;
 
         int actualDamage = Mathf.Min(damageAmount, currentHealth);
         currentHealth -= actualDamage;
