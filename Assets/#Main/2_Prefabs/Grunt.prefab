@@ -71,7 +71,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7f10a9d2618ced54f8d87eb7fae84fc2, type: 2}
+  - {fileID: 2100000, guid: 853206296390359498522ea4f00952cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   player: {fileID: 0}
   appearesObject: {fileID: 25463925453051004}
   navMeshAgent: {fileID: 6636706606380751868}
+  knockbackForce: 5
   scrapDropAmount: 5
   slopDropAmount: 2
   corpsePrefab: {fileID: 1562112532435634118, guid: 5b17767b412525c489f9abac35525f01,

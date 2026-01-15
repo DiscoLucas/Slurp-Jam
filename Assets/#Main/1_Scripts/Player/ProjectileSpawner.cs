@@ -10,7 +10,9 @@ public class ProjectileSpawner : MonoBehaviour
 
     public void Fire()
     {
-        if(ammo>0){
+        UI_PlayerHealth uiPlayerHealth = FindObjectOfType<UI_PlayerHealth>();
+        uiPlayerHealth.RefreshAmmoText();
+        if (ammo>0){
             GameObject.Instantiate<GameObject>(projectile,transform.position,transform.rotation);
             if (usesAmmo)
             {

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class SlurpManager : MonoBehaviour
 {
     // The maximum health of the McD base
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] public int maxHealth = 100;
     // The current health of the McD base
     private int currentHealth = 0;
 
