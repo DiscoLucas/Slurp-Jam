@@ -1,9 +1,14 @@
 using UnityEngine;
 using System;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class SlurpManager : MonoBehaviour
 {
+    [Header("player Reference")]
+    PlayerActions playerActions;
+    PlayerContainer playerContainer;
+
     [Header("Health Settings")]
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth = 0;
@@ -20,15 +25,33 @@ public class SlurpManager : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    void Start()
+    {
+        playerContainer = FindFirstObjectByType<PlayerContainer>();
+        if(playerContainer == null)
+        {
+            Debug.LogError("SlurpManager could not find PlayerContainer in the scene!", this);
+        }
+    }
+
     /// <summary>
     /// Add slurp to the silo (player collects slurp)
     /// </summary>
     /// <param name="amount"></param>
-    public void AddSlurp(int amount)
+    /// <returns>The surplus amount that couldn't be added due to capacity</returns>
+    public int AddSlurp(int amount)
     {
-        if (amount <= 0) return;
-        currentHealth += Mathf.Max(maxHealth,currentHealth);
+        if (amount <= 0) return 0;
+
+        int availableSpace = maxHealth - currentHealth;
+        int actualAdded = Mathf.Min(amount, availableSpace);
+        
+        currentHealth += actualAdded;
+        
         OnBaseHealthChanged?.Invoke(currentHealth);
+        
+        int surplus = amount - actualAdded;
+        return surplus;
     }
 
     /// <summary>
@@ -55,6 +78,40 @@ public class SlurpManager : MonoBehaviour
             Debug.Log("Base destroyed!");
         }
     } 
+    public void DepostietSlurp(InputAction.CallbackContext context)
+    {
+        int slurpcount = playerContainer.GetCurrentSlurp();
+        
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("MeatGrinder trigger entered by " + other.name);
+        if(other.CompareTag("Player")){
+            if(playerActions == null)
+            {
+               playerActions = other.GetComponent<PlayerActions>(); 
+               playerActions.possiableInteractEvent.Invoke();
+            }
+            if(playerActions != null){
+                playerActions.pirrorityInteraction = true;
+                Debug.Log("Player in range to interact with MeatGrinder");
+                playerActions.Interact.action.started += DepostietSlurp;
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        Debug.Log("MeatGrinder trigger exited by " + other.name);
+        if(other.CompareTag("Player")){
+            if(playerActions != null){
+                playerActions.pirrorityInteraction = false;
+                Debug.Log("Player out of range to interact with MeatGrinder");
+                playerActions.Interact.action.started -= DepostietSlurp;
+                playerActions.unPossiableInteractEvent.Invoke();
+            }
+        }
+    }
 
 
     public int GetCurrentHealth() => currentHealth;

@@ -7,6 +7,8 @@ public class PlayerContainer : MonoBehaviour
     [SerializeField] protected int maxHealth = 100;
     [SerializeField] protected int currentHealth;
 
+    [SerializeField] protected int currentSlurp = 0;
+    [SerializeField] protected int maxSlurp = 100;
     [SerializeField] protected int scrapCount = 0;
     //UI stuff
 
@@ -43,17 +45,21 @@ public class PlayerContainer : MonoBehaviour
         return scrapCount >= amount;
     }
 
-    public void changeBaseHealth(int amount)
+    public void changeSlurpLocalAmount(int amount)
     {
-        if(amount > 0)
-        {
-            slurpManager.AddSlurp(amount);
-        }
-        else if(amount < 0)
-        {
-            slurpManager.TakeDamage(amount);
-        }
+        currentSlurp = Mathf.Clamp(currentSlurp + amount, 0, maxSlurp);
     }
+
+    public int GetCurrentSlurp()
+    {
+        return currentSlurp;
+    }
+
+    public void setcurrentSlurp(int amount)
+    {
+        currentSlurp = Mathf.Clamp(amount, 0, maxSlurp);
+    }
+
     //player death
     public void TakeDamage(int damage)
     {

@@ -119,7 +119,7 @@ public class PickUp : MonoBehaviour
         switch (pickUpType)
         {
             case PickUpType.Slurp:
-                playerContainer.changeBaseHealth(amountToGive);
+                playerContainer.changeSlurpLocalAmount(amountToGive);
                 Debug.Log("Collected Slurp!");
                 break;
             case PickUpType.Scrap:

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerActions : MonoBehaviour
@@ -22,6 +23,8 @@ public class PlayerActions : MonoBehaviour
     public ProjectileSpawner ActiveProjectileSpawner; //ActiveProjectileSpawner = Weapon.GetComponentInChildren<ProjectileSpawner>();
     public int activeWeaponSpot;
     public List<GameObject> Inventory;
+    public UnityEvent possiableInteractEvent;
+    public UnityEvent unPossiableInteractEvent;
     
 
     void OnEnable()
@@ -120,6 +123,8 @@ public class PlayerActions : MonoBehaviour
         if (pu != null)
             pu.EnablePickup();
     }
+
+    
 
 #region Swapping Weapons
     void SwapWeapon(int direction)
