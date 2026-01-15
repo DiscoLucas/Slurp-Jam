@@ -33,20 +33,24 @@ public class PlayerActions : MonoBehaviour
     {
         foreach(Transform g in gameObject.GetComponentsInChildren<Transform>())
         {
-            Inventory.Add(g.gameObject);
+            if(g.GetComponent<ProjectileSpawner>()){
+                Inventory.Add(g.gameObject);
+                g.gameObject.SetActive(false);
+            }
         }
-        ActiveProjectileSpawner = Inventory[0].GetComponent<ProjectileSpawner>(); //Very risky, and assumes that we have projectile spawners.*/
-
-        if (Fire != null)
+        if(Inventory[0])
         {
-            Fire.action.started += OnFireStarted;
-            Fire.action.canceled += OnFireCanceled;
+            ActiveProjectileSpawner = Inventory[0].GetComponent<ProjectileSpawner>();
+            Inventory[0].SetActive(true);
         }
 
-        if (SwapNext != null)
-            SwapNext.action.performed += OnSwapNext;
-        if (SwapPrev != null)
-            SwapPrev.action.performed += OnSwapPrev;
+        Fire.action.started += ctx => isFiring = true;
+        Fire.action.canceled += ctx => isFiring = false;
+
+
+        Interact.action.started += OnInteract;
+        SwapNext.action.performed += OnSwapNext;
+        SwapPrev.action.performed += OnSwapPrev;
     }
 
     void OnDisable()
@@ -70,7 +74,6 @@ public class PlayerActions : MonoBehaviour
 
         if (isFiring)
         {
-            Debug.Log("Fire!");
             OnFire();
         }
     }
@@ -100,7 +103,7 @@ public class PlayerActions : MonoBehaviour
         yield return null;
     }
 
-    private void InteractAction(InputAction.CallbackContext context)
+    private void OnInteract(InputAction.CallbackContext context)
     {
         Debug.Log("Interact action triggered");
         if (!pirrorityInteraction && carryinObject)
