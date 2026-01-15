@@ -74,11 +74,11 @@ public class UI_PlayerStats : MonoBehaviour
         weaponIconUI.sprite = weapon.ActiveProjectileSpawner.weaponIcon;
         if (weapon.ActiveProjectileSpawner.usesAmmo)
         {
-            ammoText.text = "Ammo: " + weapon.ActiveProjectileSpawner.ammo.ToString();
+            ammoText.text = " " + weapon.ActiveProjectileSpawner.ammo.ToString();
         }
         else
         {
-            ammoText.text = "Ammo: ∞";
+            ammoText.text = " ∞";
         }
     }
 
